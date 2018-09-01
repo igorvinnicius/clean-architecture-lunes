@@ -3,9 +3,28 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27428.2037
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{B8BE6DA1-8C3F-40D8-833B-62CD4BB63103}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{BE6768F4-4F81-4CAA-9E3E-B519DBC19C18}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "lunes.Domain.UnitTests", "tests\lunes.Domain.UnitTests\lunes.Domain.UnitTests.csproj", "{FB1F46BD-C09C-49D1-9EF1-453A999BAF4A}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FB1F46BD-C09C-49D1-9EF1-453A999BAF4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB1F46BD-C09C-49D1-9EF1-453A999BAF4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB1F46BD-C09C-49D1-9EF1-453A999BAF4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB1F46BD-C09C-49D1-9EF1-453A999BAF4A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{FB1F46BD-C09C-49D1-9EF1-453A999BAF4A} = {BE6768F4-4F81-4CAA-9E3E-B519DBC19C18}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B9C599AA-17AA-48D7-836E-4BAD5D5BB976}
