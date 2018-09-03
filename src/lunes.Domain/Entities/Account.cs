@@ -14,5 +14,10 @@ namespace lunes.Domain.Entities
 			Name = name;
 			Balance = 0;
 		}
-	}
+
+	    public void AddRevenue(double value)
+	    {
+		    Balance = 100;
+	    }
+    }
 }

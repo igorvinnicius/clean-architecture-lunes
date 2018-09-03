@@ -13,6 +13,8 @@ namespace lunes.Domain.UnitTests.Accounts
 			Assert.Equal(0, sut.Balance);
 	    }
 
+		
+
 
     }
 }
