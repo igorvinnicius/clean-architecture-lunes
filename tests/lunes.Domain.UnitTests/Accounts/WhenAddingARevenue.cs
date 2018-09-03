@@ -15,6 +15,16 @@ namespace lunes.Domain.UnitTests.Accounts
 			Assert.Equal(100, sut.Balance);
 	    }
 
+	    [Fact]
+	    public void ShouldHaveABalanceOf200WhenAddingARevenueOf100AndCurrentBalanceIs100()
+	    {
+		    var sut = new Account("Sut Account");
+		    sut.AddRevenue(100);
 
-    }
+			sut.AddRevenue(100);
+
+		    Assert.Equal(200, sut.Balance);
+	    }
+
+	}
 }
