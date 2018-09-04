@@ -17,7 +17,7 @@ namespace lunes.Domain.Entities
 		
 	    public void AddRevenue(double value)
 	    {
-		    Balance += 100;
+		    Balance += value;
 	    }
     }
 }
