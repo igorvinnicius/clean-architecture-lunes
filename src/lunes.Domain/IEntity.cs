@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace lunes.Domain.Entities
+namespace lunes.Domain
 {
     public interface IEntity
     {

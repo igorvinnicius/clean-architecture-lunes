@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 
-namespace lunes.Domain.Entities
+namespace lunes.Domain.Accounts
 {
     public class Account : IEntity
     {
@@ -12,6 +12,7 @@ namespace lunes.Domain.Entities
 	    public double Balance { get; private set; }
 
 	    private ICollection<IOperation> _operations;
+
 		public Account(string name)
 		{
 			Id = Guid.NewGuid();
@@ -21,9 +22,12 @@ namespace lunes.Domain.Entities
 			_operations = new List<IOperation>();
 		}
 		
-	    public void AddRevenue(double value)
+	    public void AddRevenue(string name, double amount)
 	    {
-		    Balance += value;
+		    var revenue = new Revenue(name, amount);
+			_operations.Add(revenue);
+
+		    Balance += revenue.Ammount;
 	    }
 
 	    public IReadOnlyCollection<IOperation> GetRevenues()
@@ -33,7 +37,7 @@ namespace lunes.Domain.Entities
 	    }
     }
 
-	public interface IOperation
-	{
-	}
+	
+
+	
 }

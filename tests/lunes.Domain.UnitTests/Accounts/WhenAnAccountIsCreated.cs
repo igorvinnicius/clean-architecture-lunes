@@ -1,4 +1,4 @@
-﻿using lunes.Domain.Entities;
+﻿using lunes.Domain.Accounts;
 using Xunit;
 
 namespace lunes.Domain.UnitTests.Accounts
@@ -12,9 +12,6 @@ namespace lunes.Domain.UnitTests.Accounts
 
 			Assert.Equal(0, sut.Balance);
 	    }
-
-		
-
 
     }
 }
