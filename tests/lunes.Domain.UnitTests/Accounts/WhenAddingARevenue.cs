@@ -26,5 +26,19 @@ namespace lunes.Domain.UnitTests.Accounts
 		    Assert.Equal(200, sut.Balance);
 	    }
 
-	}
+	    [Fact]
+	    public void AccountShouldKeepAllRevenues()
+	    {
+		    var sut = new Account("Sut Account");
+
+		    sut.AddRevenue(100);
+			sut.AddRevenue(500);
+
+		    var revenues = sut.GetRevenues();
+
+			Assert.NotEmpty(revenues);
+			Assert.Equal(2, revenues.Count);
+	    }
+
+    }
 }
