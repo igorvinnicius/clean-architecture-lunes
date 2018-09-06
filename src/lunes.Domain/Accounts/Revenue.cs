@@ -11,6 +11,7 @@ namespace lunes.Domain.Accounts
 		public Revenue(string name, double ammount)
 		{
 			Name = name;
+			Date = DateTime.Now;
 			Ammount = ammount;
 		}
 	}
