@@ -28,7 +28,7 @@ namespace lunes.Domain.Accounts
 		    var revenue = new Revenue(name, amount);
 			_operations.Add(revenue);
 
-		    Balance += revenue.Ammount;
+		    Balance += revenue.Amount;
 	    }
 
 	    public IReadOnlyCollection<IOperation> GetRevenues()
@@ -39,8 +39,8 @@ namespace lunes.Domain.Accounts
 
 	    public double GetCurrentBalance()
 	    {
-		    var totalRevenues = GetRevenues().Sum(r => r.Ammount);
-		    var totalExpenses = GetExpenses().Sum(e => e.Ammount);
+		    var totalRevenues = GetRevenues().Sum(r => r.Amount);
+		    var totalExpenses = GetExpenses().Sum(e => e.Amount);
 
 		    return totalRevenues - totalExpenses;
 	    }

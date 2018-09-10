@@ -6,12 +6,12 @@ namespace lunes.Domain.Accounts
     {
 	    public string Name { get; }
 	    public DateTime Date { get; }
-	    public double Ammount { get; }
+	    public double Amount { get; }
 
-		public Expense(string name, double ammount)
+		public Expense(string name, double amount)
 		{
 			Name = name;
-			Ammount = ammount;
+			Amount = amount;
 			Date = DateTime.Now;
 		}
 	}

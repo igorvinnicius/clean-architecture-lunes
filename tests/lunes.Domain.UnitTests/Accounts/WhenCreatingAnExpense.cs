@@ -16,7 +16,7 @@ namespace lunes.Domain.UnitTests.Accounts
 		    var sut = new Expense(expectedName, expectedAmount);
 
 			Assert.Equal(expectedName, sut.Name);
-		    Assert.Equal(expectedAmount, sut.Ammount);
+		    Assert.Equal(expectedAmount, sut.Amount);
 		    Assert.Equal(expectedDate.Date, sut.Date.Date);
 
 		}

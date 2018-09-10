@@ -8,6 +8,6 @@ namespace lunes.Domain.Accounts
 
 		DateTime Date { get; }
 
-		double Ammount { get; }
+		double Amount { get; }
 	}
 }
