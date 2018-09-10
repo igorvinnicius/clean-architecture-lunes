@@ -10,7 +10,7 @@ namespace lunes.Domain.UnitTests.Accounts
 	    {
 		    var sut = new Account("Sut Account");
 
-			Assert.Equal(0, sut.Balance);
+			Assert.Equal(0, sut.GetCurrentBalance());
 	    }
 
     }

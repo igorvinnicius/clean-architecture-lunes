@@ -35,6 +35,11 @@ namespace lunes.Domain.Accounts
 		    var revenues = _operations.ToList();
 		    return new ReadOnlyCollection<IOperation>(revenues);
 	    }
+
+	    public double GetCurrentBalance()
+	    {
+		    return _operations.Sum(o => o.Ammount);
+	    }
     }
 
 	

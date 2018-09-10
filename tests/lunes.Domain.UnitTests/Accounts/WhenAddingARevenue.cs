@@ -12,7 +12,7 @@ namespace lunes.Domain.UnitTests.Accounts
 
 		    sut.AddRevenue("Revenue", 100);
 
-			Assert.Equal(100, sut.Balance);
+			Assert.Equal(100, sut.GetCurrentBalance());
 	    }
 
 	    [Fact]
@@ -23,7 +23,7 @@ namespace lunes.Domain.UnitTests.Accounts
 		    sut.AddRevenue("Revenue", 100);
 			sut.AddRevenue("Revenue 2", 100);
 
-		    Assert.Equal(200, sut.Balance);
+		    Assert.Equal(200, sut.GetCurrentBalance());
 	    }
 
 	    [Fact]
