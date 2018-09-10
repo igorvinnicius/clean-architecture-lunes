@@ -12,6 +12,7 @@ namespace lunes.Domain.Accounts
 		{
 			Name = name;
 			Ammount = ammount;
+			Date = DateTime.Now;
 		}
 	}
 }
