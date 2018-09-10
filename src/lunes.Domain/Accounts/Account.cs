@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using Microsoft.Win32.SafeHandles;
 
 namespace lunes.Domain.Accounts
 {
@@ -32,13 +33,28 @@ namespace lunes.Domain.Accounts
 
 	    public IReadOnlyCollection<IOperation> GetRevenues()
 	    {
-		    var revenues = _operations.ToList();
+		    var revenues = _operations.Where(o => o is Revenue).ToList();
 		    return new ReadOnlyCollection<IOperation>(revenues);
 	    }
 
 	    public double GetCurrentBalance()
 	    {
-		    return _operations.Sum(o => o.Ammount);
+		    var totalRevenues = GetRevenues().Sum(r => r.Ammount);
+		    var totalExpenses = GetExpenses().Sum(e => e.Ammount);
+
+		    return totalRevenues - totalExpenses;
+	    }
+
+	    private IReadOnlyCollection<IOperation> GetExpenses()
+	    {
+			var expenses = _operations.Where(o => o is Expense).ToList();
+		    return new ReadOnlyCollection<IOperation>(expenses);
+		}
+
+	    public void AddExpense(string name, double amount)
+	    {
+		    var expense = new Expense(name, amount);
+			_operations.Add(expense);
 	    }
     }
 
