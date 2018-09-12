@@ -41,7 +41,21 @@ namespace lunes.Domain.UnitTests.Accounts
 		    Assert.Equal(-100, sut.GetCurrentBalance());
 	    }
 
-	    [Theory]
+	    [Fact]
+	    public void AccountShouldKeepAllExpenses()
+	    {
+		    var sut = new Account("Sut Account");
+
+		    sut.AddExpense("Revenue", 600);
+		    sut.AddExpense("Revenue 2", 200);
+
+		    var revenues = sut.GetExpenses();
+
+		    Assert.NotEmpty(revenues);
+		    Assert.Equal(2, revenues.Count);
+	    }
+
+		[Theory]
 		[InlineData(100, 20.80, 79.20)]
 	    [InlineData(300, 260, 40)]
 	    [InlineData(3000, 250.86, 2749.14)]

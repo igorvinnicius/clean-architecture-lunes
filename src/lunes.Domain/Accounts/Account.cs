@@ -45,7 +45,7 @@ namespace lunes.Domain.Accounts
 		    return totalRevenues - totalExpenses;
 	    }
 
-	    private IReadOnlyCollection<IOperation> GetExpenses()
+	    public IReadOnlyCollection<IOperation> GetExpenses()
 	    {
 			var expenses = _operations.Where(o => o is Expense).ToList();
 		    return new ReadOnlyCollection<IOperation>(expenses);
