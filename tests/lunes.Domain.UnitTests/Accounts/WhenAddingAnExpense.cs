@@ -41,5 +41,21 @@ namespace lunes.Domain.UnitTests.Accounts
 		    Assert.Equal(-100, sut.GetCurrentBalance());
 	    }
 
-	}
+	    [Theory]
+		[InlineData(100, 20.80, 79.20)]
+	    [InlineData(300, 260, 40)]
+	    [InlineData(3000, 250.86, 2749.14)]
+	    [InlineData(2000, 4020, -2020)]
+		public void ShouldCalculateBalanceCorrectly(double initialBalance, double expense, double expectedBalance)
+	    {
+		    var sut = new Account("Sut Account");
+
+		    sut.AddRevenue("Revenue", initialBalance);
+
+		    sut.AddExpense("Expense", expense);
+
+		    Assert.Equal(expectedBalance, sut.GetCurrentBalance());
+		}
+
+    }
 }
