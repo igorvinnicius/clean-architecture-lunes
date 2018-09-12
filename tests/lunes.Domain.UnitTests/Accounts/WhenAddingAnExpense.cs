@@ -6,7 +6,7 @@ namespace lunes.Domain.UnitTests.Accounts
     public class WhenAddingAnExpense
     {
 	    [Fact]
-	    public void ShouldHaveABalanceOf100WhenAddingARevenueAndCurrentBalanceIs200()
+	    public void ShouldHaveABalanceOf100WhenAddingAnExpenseOf100AndCurrentBalanceIs200()
 	    {
 		    var sut = new Account("Sut Account");
 
@@ -17,5 +17,17 @@ namespace lunes.Domain.UnitTests.Accounts
 			Assert.Equal(100, sut.GetCurrentBalance());
 	    }
 
-    }
+	    [Fact]
+	    public void ShouldHaveABalanceOfMinus100WhenAddingAnExpenseOf300AndCurrentBalanceIs200()
+	    {
+		    var sut = new Account("Sut Account");
+
+		    sut.AddRevenue("Revenue", 200);
+
+		    sut.AddExpense("Expense", 300);
+
+		    Assert.Equal(-100, sut.GetCurrentBalance());
+	    }
+
+	}
 }
