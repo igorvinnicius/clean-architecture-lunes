@@ -18,6 +18,18 @@ namespace lunes.Domain.UnitTests.Accounts
 	    }
 
 	    [Fact]
+	    public void ShouldHaveABalanceOfZeroWhenAddingAnExpenseOf200AndCurrentBalanceIs200()
+	    {
+		    var sut = new Account("Sut Account");
+
+		    sut.AddRevenue("Revenue", 200);
+
+		    sut.AddExpense("Expense", 200);
+
+		    Assert.Equal(0, sut.GetCurrentBalance());
+	    }
+
+		[Fact]
 	    public void ShouldHaveABalanceOfMinus100WhenAddingAnExpenseOf300AndCurrentBalanceIs200()
 	    {
 		    var sut = new Account("Sut Account");
