@@ -6,7 +6,7 @@ using Microsoft.Win32.SafeHandles;
 
 namespace lunes.Domain.Accounts
 {
-    public class Account : IEntity
+    public class Account : IEntity, IAggregateRoot
     {
 	    public Guid Id { get; }
 	    public string Name { get; private set; }
