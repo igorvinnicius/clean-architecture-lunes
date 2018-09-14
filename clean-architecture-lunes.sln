@@ -15,6 +15,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "lunes.UseCases.UnitTests", "tests\lunes.UseCases.UnitTests\lunes.UseCases.UnitTests.csproj", "{4F7C159A-BE47-4B97-A43E-7122A7F548FF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "lunes.Application", "src\lunes.Application\lunes.Application.csproj", "{57AA0168-530C-4039-A25F-98336AFA1E8F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{4F7C159A-BE47-4B97-A43E-7122A7F548FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4F7C159A-BE47-4B97-A43E-7122A7F548FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4F7C159A-BE47-4B97-A43E-7122A7F548FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{57AA0168-530C-4039-A25F-98336AFA1E8F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{57AA0168-530C-4039-A25F-98336AFA1E8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{57AA0168-530C-4039-A25F-98336AFA1E8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{57AA0168-530C-4039-A25F-98336AFA1E8F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -41,6 +47,7 @@ Global
 		{FB1F46BD-C09C-49D1-9EF1-453A999BAF4A} = {BE6768F4-4F81-4CAA-9E3E-B519DBC19C18}
 		{B21E3CF3-82A1-4436-A36C-07CB9E649CC1} = {B8BE6DA1-8C3F-40D8-833B-62CD4BB63103}
 		{4F7C159A-BE47-4B97-A43E-7122A7F548FF} = {BE6768F4-4F81-4CAA-9E3E-B519DBC19C18}
+		{57AA0168-530C-4039-A25F-98336AFA1E8F} = {3987AA26-D115-4808-9FCC-D55AFFC57AA7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B9C599AA-17AA-48D7-836E-4BAD5D5BB976}
