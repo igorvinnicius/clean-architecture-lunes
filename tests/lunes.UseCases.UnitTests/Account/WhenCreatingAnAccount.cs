@@ -1,4 +1,5 @@
-﻿using lunes.Application.UseCases.Account.CreateAccount;
+﻿using System.Threading.Tasks;
+using lunes.Application.UseCases.Accounts.CreateAccount;
 using Xunit;
 
 namespace lunes.UseCases.UnitTests.Account
@@ -6,14 +7,17 @@ namespace lunes.UseCases.UnitTests.Account
     public class WhenCreatingAnAccount
     {
 	    [Fact]
-	    public void ShouldHasANameAndBalanceZero()
+	    public async Task ShouldHasANameAndBalanceZero()
 	    {
 		    var expectedAccountName = "Use Case Account";
-		    var expectedBalance = 0;
+		    double expectedBalance = 0;
 
 		    var sut = new CreateAccountUseCase();
 
+		    var actualAccountOutput = await sut.Run(expectedAccountName);
 
+			Assert.Equal(expectedAccountName, actualAccountOutput.AccountName);
+			Assert.Equal(expectedBalance, actualAccountOutput.AccountBalance);
 	    }
 
     }
