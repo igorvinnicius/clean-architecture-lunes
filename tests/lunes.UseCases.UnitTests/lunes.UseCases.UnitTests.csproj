@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\lunes.Application\lunes.Application.csproj" />
+    <ProjectReference Include="..\..\src\lunes.Domain\lunes.Domain.csproj" />
   </ItemGroup>
 
 </Project>
