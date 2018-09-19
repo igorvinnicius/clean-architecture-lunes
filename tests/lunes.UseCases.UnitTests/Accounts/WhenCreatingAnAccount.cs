@@ -9,23 +9,38 @@ namespace lunes.UseCases.UnitTests.Accounts
 {
     public class WhenCreatingAnAccount
     {
+	    private readonly Mock<IAccountRepository> _mockAccountRepository;
+		
+	    public WhenCreatingAnAccount()
+	    {
+		    _mockAccountRepository = new Mock<IAccountRepository>();
+	    }
+
 	    [Fact]
 	    public async Task ShouldHasANameAndBalanceZero()
 	    {
-		    var accountRepository = new Mock<IAccountRepository>();
-
-		    var expectedAccountName = "Use Case Account";
+			var expectedAccountName = "Use Case Account";
 		    double expectedBalance = 0;
 
-		    var sut = new CreateAccountUseCase(accountRepository.Object);
+		    var sut = new CreateAccountUseCase(_mockAccountRepository.Object);
 
 		    var actualAccountOutput = await sut.Run(expectedAccountName);
 
 			Assert.Equal(expectedAccountName, actualAccountOutput.AccountName);
 			Assert.Equal(expectedBalance, actualAccountOutput.AccountBalance);
-
-			accountRepository.Verify(x => x.Add(It.IsAny<Account>()));
+			
 	    }
+
+	    [Fact]
+	    public async Task ShouldCallAddMethodInRepositoryProperly()
+	    {
+			var sut = new CreateAccountUseCase(_mockAccountRepository.Object);
+
+			await sut.Run("Account");
+
+		    _mockAccountRepository.Verify(x => x.Add(It.IsAny<Account>()));
+
+		}
 
     }
 }
