@@ -55,6 +55,11 @@ namespace lunes.Domain.Accounts
 		    var expense = new Expense(name, amount);
 			_operations.Add(expense);
 	    }
+
+	    public void UpdateName(string name)
+	    {
+		    Name = name;
+	    }
     }
 
 	
