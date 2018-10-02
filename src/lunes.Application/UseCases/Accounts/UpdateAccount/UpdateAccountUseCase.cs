@@ -6,20 +6,20 @@ namespace lunes.Application.UseCases.Accounts.UpdateAccount
 {
     public class UpdateAccountUseCase
     {
-	    private readonly IAccountReadOnlyRepository _accountReaOnlyRepository;
+	    private readonly IAccountReadOnlyRepository _accountReadOnlyRepository;
 
 	    public UpdateAccountUseCase(IAccountReadOnlyRepository accountReadOnlyRepository)
 	    {
-		    _accountReaOnlyRepository = accountReadOnlyRepository;
+		    _accountReadOnlyRepository = accountReadOnlyRepository;
 	    }
 
 	    public async Task<UpdateAccountOutput> Run(Guid accountId, string accountName)
 	    {
-		    var account = await _accountReaOnlyRepository.GetAccount(accountId);
+		    var account = await _accountReadOnlyRepository.GetAccount(accountId);
 
 		    account.UpdateName(accountName);
 
-			return new UpdateAccountOutput();
+			return new UpdateAccountOutput(account.Name);
 	    }
     }
 }

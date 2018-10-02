@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using lunes.Application.Repositories.Accounts;
 using lunes.Application.UseCases.Accounts.UpdateAccount;
 using lunes.Domain.Accounts;
@@ -9,19 +10,32 @@ namespace lunes.UseCases.UnitTests.Accounts
 {
     public class WhenUpdatingAnAccount
     {
-	    private readonly Mock<IAccountReadOnlyRepository> _mockAccountRepository;
+	    private readonly Mock<IAccountReadOnlyRepository> _mockAccountReadOnlyRepository;
+	    private readonly Mock<IAccountRepository> _mockAccountRepository;
 
-		[Fact]
+		public WhenUpdatingAnAccount()
+	    {
+			_mockAccountReadOnlyRepository = new Mock<IAccountReadOnlyRepository>();
+			_mockAccountRepository = new Mock<IAccountRepository>();
+	    }
+
+	    [Fact]
 	    public async  Task ShouldUpdateAccountNameProperly()
 		{
 			var expectedAccountName = "Updated Account";
 
 			var account = new Account("New Account");
 
-			var sut = new UpdateAccountUseCase(_mockAccountRepository.Object);
+			_mockAccountReadOnlyRepository.Setup(x => x.GetAccount(It.IsAny<Guid>())).ReturnsAsync(account);
+			
+			var sut = new UpdateAccountUseCase(_mockAccountReadOnlyRepository.Object);
 
-			await sut.Run(account.Id, expectedAccountName);
+			var actualAccountOutput = await sut.Run(account.Id, expectedAccountName);
+
+			Assert.Equal(expectedAccountName, actualAccountOutput.AccountName);
 		}
 
-    }
+	   
+
+	}
 }
