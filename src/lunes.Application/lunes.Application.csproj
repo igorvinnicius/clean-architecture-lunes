@@ -8,4 +8,8 @@
     <ProjectReference Include="..\lunes.Domain\lunes.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="UseCases\Accounts\AddRevenue\" />
+  </ItemGroup>
+
 </Project>
