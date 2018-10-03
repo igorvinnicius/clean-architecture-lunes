@@ -13,45 +13,46 @@ namespace lunes.UseCases.UnitTests.Accounts
 	    private readonly Mock<IAccountReadOnlyRepository> _mockAccountReadOnlyRepository;
 	    private readonly Mock<IAccountRepository> _mockAccountRepository;
 
+	    private Account _account;
+	    private UpdateAccountUseCase _sut;
+
 		public WhenUpdatingAnAccount()
 	    {
 			_mockAccountReadOnlyRepository = new Mock<IAccountReadOnlyRepository>();
 			_mockAccountRepository = new Mock<IAccountRepository>();
-	    }
+
+			_sut = new UpdateAccountUseCase(_mockAccountReadOnlyRepository.Object, _mockAccountRepository.Object);
+		}
 
 	    [Fact]
 	    public async  Task ShouldUpdateAccountNameProperly()
 		{
+			AssumeAccountInRepository();
+
 			var expectedAccountName = "Updated Account";
 
-			var account = new Account("New Account");
-
-			_mockAccountReadOnlyRepository.Setup(x => x.GetAccount(It.IsAny<Guid>())).ReturnsAsync(account);
-			
-			var sut = new UpdateAccountUseCase(_mockAccountReadOnlyRepository.Object, _mockAccountRepository.Object);
-
-			var actualAccountOutput = await sut.Run(account.Id, expectedAccountName);
+			var actualAccountOutput = await _sut.Run(_account.Id, expectedAccountName);
 
 			Assert.Equal(expectedAccountName, actualAccountOutput.AccountName);
 		}
 
-
-	    [Fact]
+		[Fact]
 	    public async Task ShouldCallUpdateinRepositoryProperly()
 	    {
-		    var expectedAccountName = "Updated Account";
+			AssumeAccountInRepository();
 
-		    var account = new Account("New Account");
-
-		    _mockAccountReadOnlyRepository.Setup(x => x.GetAccount(It.IsAny<Guid>())).ReturnsAsync(account);
-
-		    var sut = new UpdateAccountUseCase(_mockAccountReadOnlyRepository.Object, _mockAccountRepository.Object);
-
-		    await sut.Run(account.Id, expectedAccountName);
+		    await _sut.Run(_account.Id, "Updated Account");
 
 			_mockAccountRepository.Verify(x => x.Update(It.IsAny<Account>()));
 		}
 
+	    private void AssumeAccountInRepository()
+	    {
+		    _account = new Account("New Account");
+
+		    _mockAccountReadOnlyRepository.Setup(x => x.GetAccount(It.IsAny<Guid>())).ReturnsAsync(_account);
+
+	    }
 
 	}
 }
