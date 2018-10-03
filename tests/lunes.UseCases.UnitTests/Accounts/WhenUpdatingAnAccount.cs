@@ -28,7 +28,7 @@ namespace lunes.UseCases.UnitTests.Accounts
 
 			_mockAccountReadOnlyRepository.Setup(x => x.GetAccount(It.IsAny<Guid>())).ReturnsAsync(account);
 			
-			var sut = new UpdateAccountUseCase(_mockAccountReadOnlyRepository.Object);
+			var sut = new UpdateAccountUseCase(_mockAccountReadOnlyRepository.Object, _mockAccountRepository.Object);
 
 			var actualAccountOutput = await sut.Run(account.Id, expectedAccountName);
 
@@ -45,7 +45,7 @@ namespace lunes.UseCases.UnitTests.Accounts
 
 		    _mockAccountReadOnlyRepository.Setup(x => x.GetAccount(It.IsAny<Guid>())).ReturnsAsync(account);
 
-		    var sut = new UpdateAccountUseCase(_mockAccountReadOnlyRepository.Object);
+		    var sut = new UpdateAccountUseCase(_mockAccountReadOnlyRepository.Object, _mockAccountRepository.Object);
 
 		    await sut.Run(account.Id, expectedAccountName);
 
