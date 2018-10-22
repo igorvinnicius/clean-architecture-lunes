@@ -11,7 +11,7 @@ namespace lunes.Application.UseCases.Accounts.UpdateAccount
 
 		public UpdateAccountUseCase(IAccountReadOnlyRepository accountReadOnlyRepository, IAccountRepository accountRepository)
 	    {
-		    _accountReadOnlyRepository = accountReadOnlyRepository;
+		    this._accountReadOnlyRepository = accountReadOnlyRepository;
 		    this._accountRepository = accountRepository;
 	    }
 

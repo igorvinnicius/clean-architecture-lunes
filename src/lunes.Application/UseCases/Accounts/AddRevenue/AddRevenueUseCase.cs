@@ -1,12 +1,27 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
+using lunes.Application.Repositories.Accounts;
 
 namespace lunes.Application.UseCases.Accounts.AddRevenue
 {
     public class AddRevenueUseCase
     {
-	    public async Task<AddRevenueOutput> Run(double expectedBalance)
+	    private readonly IAccountReadOnlyRepository _accountReadOnlyRepository;
+	    private readonly IAccountRepository _accountRepository;
+
+	    public AddRevenueUseCase(IAccountReadOnlyRepository accountReadOnlyRepository, IAccountRepository accountRepository)
 	    {
-		   return new AddRevenueOutput(0);
+		    this._accountReadOnlyRepository = accountReadOnlyRepository;
+		    this._accountRepository = accountRepository;
+	    }
+
+		public async Task<AddRevenueOutput> Run(Guid accountId, double expectedBalance)
+	    {
+		    var account = await this._accountReadOnlyRepository.GetAccount(accountId);
+
+			account.AddRevenue("New Revenue", expectedBalance);
+
+			return new AddRevenueOutput(account.GetCurrentBalance());
 	    }
     }
 }
