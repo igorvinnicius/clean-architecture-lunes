@@ -13,6 +13,7 @@ namespace lunes.UseCases.UnitTests.Accounts
 	    private readonly Mock<IAccountReadOnlyRepository> _mockAccountReadOnlyRepository;
 	    private readonly Mock<IAccountRepository> _mockAccountRepository;
 
+	    private Guid _accountId;
 	    private Account _account;
 
 		public WhenAddingARevenue()
@@ -26,13 +27,11 @@ namespace lunes.UseCases.UnitTests.Accounts
 	    {
 			AssumeAccountInRepository();
 
-		    var accountId = Guid.Parse("34601486-c3d6-4ecb-9305-bd4853c26e97");
-
 		    var expectedBalance = 200;
 
 		    var sut = new AddRevenueUseCase(_mockAccountReadOnlyRepository.Object, _mockAccountRepository.Object);
 
-		    var addRevenueOutput =  await sut.Run(accountId, expectedBalance);
+		    var addRevenueOutput =  await sut.Run(_accountId, expectedBalance);
 
 			Assert.Equal(expectedBalance, addRevenueOutput.Balance);
 
@@ -42,7 +41,9 @@ namespace lunes.UseCases.UnitTests.Accounts
 	    {
 		    _account = new Account("New Account");
 
-		    _mockAccountReadOnlyRepository.Setup(x => x.GetAccount(It.IsAny<Guid>())).ReturnsAsync(_account);
+		    _accountId = _account.Id;
+
+		    _mockAccountReadOnlyRepository.Setup(x => x.GetAccount(_accountId)).ReturnsAsync(_account);
 
 	    }
 
