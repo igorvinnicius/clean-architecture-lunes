@@ -16,10 +16,14 @@ namespace lunes.UseCases.UnitTests.Accounts
 	    private Guid _accountId;
 	    private Account _account;
 
+	    private AddRevenueUseCase _sut;
+
 		public WhenAddingARevenue()
 	    {
 			_mockAccountReadOnlyRepository = new Mock<IAccountReadOnlyRepository>();
 		    _mockAccountRepository = new Mock<IAccountRepository>();
+
+			_sut = new AddRevenueUseCase(_mockAccountReadOnlyRepository.Object, _mockAccountRepository.Object);
 		}
 
 		[Fact]
@@ -29,15 +33,23 @@ namespace lunes.UseCases.UnitTests.Accounts
 
 		    var expectedBalance = 200;
 
-		    var sut = new AddRevenueUseCase(_mockAccountReadOnlyRepository.Object, _mockAccountRepository.Object);
-
-		    var addRevenueOutput =  await sut.Run(_accountId, expectedBalance);
+		    var addRevenueOutput =  await _sut.Run(_accountId, expectedBalance);
 
 			Assert.Equal(expectedBalance, addRevenueOutput.Balance);
 
 	    }
 
-	    private void AssumeAccountInRepository()
+	    [Fact]
+	    public async Task ShouldCallUpdateinRepositoryProperly()
+	    {
+		    AssumeAccountInRepository();
+
+		    await _sut.Run(_account.Id, 100);
+
+		    _mockAccountRepository.Verify(x => x.Update(It.IsAny<Account>()));
+	    }
+
+		private void AssumeAccountInRepository()
 	    {
 		    _account = new Account("New Account");
 
