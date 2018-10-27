@@ -21,6 +21,8 @@ namespace lunes.Application.UseCases.Accounts.AddRevenue
 
 			account.AddRevenue("New Revenue", expectedBalance);
 
+		    await _accountRepository.Update(account);
+
 			return new AddRevenueOutput(account.GetCurrentBalance());
 	    }
     }
