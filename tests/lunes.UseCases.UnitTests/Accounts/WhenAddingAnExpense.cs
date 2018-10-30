@@ -23,7 +23,10 @@ namespace lunes.UseCases.UnitTests.Accounts
 			_account = new Account("New Account");
 			_account.AddRevenue("Initial Balance", 400);
 
-		    _sut = new AddExpenseUseCase(_mockAccountReadOnlyRepository.Object, _mockAccountRepository.Object);
+		    _mockAccountReadOnlyRepository = new Mock<IAccountReadOnlyRepository>();
+		    _mockAccountRepository = new Mock<IAccountRepository>();
+
+			_sut = new AddExpenseUseCase(_mockAccountReadOnlyRepository.Object, _mockAccountRepository.Object);
 
 		}
 

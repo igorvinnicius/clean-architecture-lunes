@@ -20,7 +20,7 @@ namespace lunes.Application.UseCases.Accounts.AddExpense
 	    {
 			var account = await this._accountReadOnlyRepository.GetAccount(accountId);
 
-		    account.AddRevenue("New Expense", value);
+		    account.AddExpense("New Expense", value);
 
 		    await _accountRepository.Update(account);
 
