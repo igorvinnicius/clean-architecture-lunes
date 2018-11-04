@@ -1,14 +1,13 @@
 ﻿using System;
 using lunes.Application.Repositories.Accounts;
 using lunes.Application.UseCases.Accounts.AddExpense;
-using lunes.Application.UseCases.Accounts.AddRevenue;
 using lunes.Domain.Accounts;
 using Moq;
 using Xunit;
 
 namespace lunes.UseCases.UnitTests.Accounts
 {
-    public class WhenAddingAnExpense
+	public class WhenAddingAnExpense
     {
 	    private readonly Mock<IAccountReadOnlyRepository> _mockAccountReadOnlyRepository;
 	    private readonly Mock<IAccountRepository> _mockAccountRepository;
