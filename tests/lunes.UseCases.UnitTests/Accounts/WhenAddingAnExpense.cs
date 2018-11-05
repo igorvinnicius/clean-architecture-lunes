@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using lunes.Application.Repositories.Accounts;
 using lunes.Application.UseCases.Accounts.AddExpense;
 using lunes.Domain.Accounts;
@@ -42,7 +43,17 @@ namespace lunes.UseCases.UnitTests.Accounts
 
 		}
 
-	    private void AssumeAccountInRepository()
+	    [Fact]
+	    public async void ShouldCallUpdateinRepositoryProperly()
+	    {
+		    AssumeAccountInRepository();
+
+		    await _sut.Run(_account.Id, 100);
+
+		    _mockAccountRepository.Verify(x => x.Update(It.IsAny<Account>()));
+	    }
+
+		private void AssumeAccountInRepository()
 	    {
 
 		    _accountId = _account.Id;
