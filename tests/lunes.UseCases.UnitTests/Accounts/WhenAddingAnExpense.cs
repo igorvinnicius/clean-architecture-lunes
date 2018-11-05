@@ -55,7 +55,6 @@ namespace lunes.UseCases.UnitTests.Accounts
 
 		private void AssumeAccountInRepository()
 	    {
-
 		    _accountId = _account.Id;
 
 		    _mockAccountReadOnlyRepository.Setup(x => x.GetAccount(_accountId)).ReturnsAsync(_account);

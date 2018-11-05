@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Threading.Tasks;
 using lunes.Application.Repositories.Accounts;
-using lunes.Application.UseCases.Accounts.AddRevenue;
 
 namespace lunes.Application.UseCases.Accounts.AddExpense
 {
-    public class AddExpenseUseCase
+	public class AddExpenseUseCase
     {
 	    private readonly IAccountReadOnlyRepository _accountReadOnlyRepository;
 	    private readonly IAccountRepository _accountRepository;
