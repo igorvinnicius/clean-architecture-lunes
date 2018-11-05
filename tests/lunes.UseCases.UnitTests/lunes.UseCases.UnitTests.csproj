@@ -17,6 +17,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\src\lunes.Application\lunes.Application.csproj" />
     <ProjectReference Include="..\..\src\lunes.Domain\lunes.Domain.csproj" />
+    <ProjectReference Include="..\lunes.Common.Tests\lunes.Common.Tests.csproj" />
   </ItemGroup>
 
 </Project>

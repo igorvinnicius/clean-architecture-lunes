@@ -1,7 +1,7 @@
 ﻿using System;
-using System.Threading.Tasks;
 using lunes.Application.Repositories.Accounts;
 using lunes.Application.UseCases.Accounts.AddExpense;
+using lunes.Common.Tests.Builders;
 using lunes.Domain.Accounts;
 using Moq;
 using Xunit;
@@ -14,13 +14,13 @@ namespace lunes.UseCases.UnitTests.Accounts
 	    private readonly Mock<IAccountRepository> _mockAccountRepository;
 
 	    private Guid _accountId;
-	    private Account _account;
+	    private readonly Account _account;
 
-	    private AddExpenseUseCase _sut;
+	    private readonly AddExpenseUseCase _sut;
 
 	    public WhenAddingAnExpense()
 	    {
-			_account = new Account("New Account");
+			_account = new AccountBuilder().Build();
 			_account.AddRevenue("Initial Balance", 400);
 
 		    _mockAccountReadOnlyRepository = new Mock<IAccountReadOnlyRepository>();

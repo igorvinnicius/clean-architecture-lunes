@@ -1,4 +1,5 @@
 ﻿using System;
+using lunes.Domain.Accounts;
 
 namespace lunes.Common.Tests.Builders
 {
@@ -16,7 +17,7 @@ namespace lunes.Common.Tests.Builders
 
 	    private double _balance;
 
-		public AccountBuilder(Guid id, string name, double balance)
+		public AccountBuilder()
 		{
 			this._id = DefaultId;
 			this._name = DefaultName;
@@ -39,6 +40,11 @@ namespace lunes.Common.Tests.Builders
 	    {
 		    this._balance = balance;
 		    return this;
+	    }
+
+	    public Account Build()
+	    {
+			return  new Account(_name);
 	    }
 
     }
