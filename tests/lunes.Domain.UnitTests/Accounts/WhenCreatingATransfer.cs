@@ -1,0 +1,28 @@
+﻿using System;
+using lunes.Domain.Accounts;
+using Xunit;
+
+namespace lunes.Domain.UnitTests.Accounts
+{
+    public class WhenCreatingATransfer
+    {
+	    [Fact]
+	    public void ShouldInitializeCorrectly()
+	    {
+		    var expectedName = "New Transfer";
+		    var expectedAmount = 100;
+		    var expectedDate = DateTime.Now;
+
+		    var expectedFromAccountId = Guid.NewGuid();
+		    var expectedToAccountId = Guid.NewGuid();
+
+		    var sut = new Transfer(expectedName, expectedDate, expectedAmount, expectedFromAccountId, expectedToAccountId);
+
+		    Assert.Equal(expectedName, sut.Name);
+		    Assert.Equal(expectedAmount, sut.Amount);
+		    Assert.Equal(expectedDate.Date, sut.Date.Date);
+		    Assert.Equal(expectedFromAccountId, sut.FromAccountId);
+		    Assert.Equal(expectedToAccountId, sut.ToAccountId);
+		}
+    }
+}
