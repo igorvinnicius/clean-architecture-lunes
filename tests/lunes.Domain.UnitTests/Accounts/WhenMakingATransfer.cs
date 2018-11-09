@@ -1,4 +1,5 @@
-﻿using Xunit;
+﻿using lunes.Domain.Accounts;
+using Xunit;
 
 namespace lunes.Domain.UnitTests.Accounts
 {
@@ -8,6 +9,11 @@ namespace lunes.Domain.UnitTests.Accounts
 	    public void ShouldCreateAExpenseInFromAccount()
 	    {
 
+	    }
+
+	    private Account CreateAccount()
+	    {
+			return new Account("New Account");
 	    }
 
     }
