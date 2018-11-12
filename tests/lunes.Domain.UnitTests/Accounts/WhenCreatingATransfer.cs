@@ -11,12 +11,12 @@ namespace lunes.Domain.UnitTests.Accounts
 	    {
 		    var expectedName = "New Transfer";
 		    var expectedAmount = 100;
-		    var expectedDate = DateTime.Now;
+		    var expectedDate = DateTime.UtcNow;
 
 		    var expectedFromAccountId = Guid.NewGuid();
 		    var expectedToAccountId = Guid.NewGuid();
 
-		    var sut = new Transfer(expectedName, expectedDate, expectedAmount, expectedFromAccountId, expectedToAccountId);
+		    var sut = new Transfer(expectedName, expectedAmount, expectedFromAccountId, expectedToAccountId);
 
 		    Assert.Equal(expectedName, sut.Name);
 		    Assert.Equal(expectedAmount, sut.Amount);

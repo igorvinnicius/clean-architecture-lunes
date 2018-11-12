@@ -40,8 +40,9 @@ namespace lunes.Domain.Accounts
 	    {
 		    var totalRevenues = GetRevenues().Sum(r => r.Amount);
 		    var totalExpenses = GetExpenses().Sum(e => e.Amount);
+		    var totalTransfers = GetTransfers().Sum(e => e.Amount);
 
-		    return totalRevenues - totalExpenses;
+			return totalRevenues - (totalExpenses + totalTransfers);
 	    }
 
 	    public IReadOnlyCollection<IOperation> GetExpenses()
@@ -50,7 +51,13 @@ namespace lunes.Domain.Accounts
 		    return new ReadOnlyCollection<IOperation>(expenses);
 		}
 
-	    public void AddExpense(string name, double amount)
+	    public IReadOnlyCollection<IOperation> GetTransfers()
+	    {
+		    var transfers = _operations.Where(o => o is Transfer).ToList();
+		    return new ReadOnlyCollection<IOperation>(transfers);
+	    }
+
+		public void AddExpense(string name, double amount)
 	    {
 		    var expense = new Expense(name, amount);
 			_operations.Add(expense);
@@ -59,6 +66,13 @@ namespace lunes.Domain.Accounts
 	    public void UpdateName(string name)
 	    {
 		    Name = name;
+	    }
+
+	    public void MakeTransfer(string name, double amount, Guid toAccountId)
+	    {
+			var transfer = new Transfer(name, amount, this.Id, toAccountId);
+			_operations.Add(transfer);
+		   
 	    }
     }
 

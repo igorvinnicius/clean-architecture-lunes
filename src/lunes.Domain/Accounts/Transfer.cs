@@ -10,10 +10,10 @@ namespace lunes.Domain.Accounts
 	    public Guid FromAccountId { get; }
 	    public Guid ToAccountId { get; }
 
-		public Transfer(string name, DateTime date, double amount, Guid fromAccountId, Guid toAccountId)
+		public Transfer(string name, double amount, Guid fromAccountId, Guid toAccountId)
 		{
 			Name = name;
-			Date = date;
+			Date = DateTime.UtcNow;
 			Amount = amount;
 			FromAccountId = fromAccountId;
 			ToAccountId = toAccountId;
