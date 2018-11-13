@@ -22,7 +22,21 @@ namespace lunes.Domain.UnitTests.Accounts
 
 	    }
 
-	    private Account CreateAccount(string name)
+	    [Fact]
+	    public void ShouldHaveABalanceOfZeroWhenMakingATransferOf200AndCurrentBalanceIs200()
+	    {
+		    var expectedBalance = 0;
+
+			var sut = new Account("Sut Account");
+
+		    sut.AddRevenue("Revenue", 200);
+
+			sut.MakeTransfer("New Transfer", 200, Guid.NewGuid());
+
+			Assert.Equal(expectedBalance, sut.GetCurrentBalance());
+	    }
+
+		private Account CreateAccount(string name)
 	    {
 		    return new AccountBuilder()
 			    .WithId(Guid.NewGuid())
