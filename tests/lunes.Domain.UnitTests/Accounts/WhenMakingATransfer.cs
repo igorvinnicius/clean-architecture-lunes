@@ -36,6 +36,18 @@ namespace lunes.Domain.UnitTests.Accounts
 			Assert.Equal(expectedBalance, sut.GetCurrentBalance());
 	    }
 
+	    [Fact]
+	    public void ShouldHaveABalanceOfMinus100WhenMakingATransferOf300AndCurrentBalanceIs200()
+	    {
+		    var sut = new Account("Sut Account");
+
+		    sut.AddRevenue("Revenue", 200);
+
+			sut.MakeTransfer("New Transfer", 300, Guid.NewGuid());
+
+			Assert.Equal(-100, sut.GetCurrentBalance());
+	    }
+
 		private Account CreateAccount(string name)
 	    {
 		    return new AccountBuilder()
