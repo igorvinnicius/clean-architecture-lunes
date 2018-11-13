@@ -46,13 +46,13 @@ namespace lunes.Domain.UnitTests.Accounts
 	    {
 		    var sut = new Account("Sut Account");
 
-		    sut.AddExpense("Revenue", 600);
-		    sut.AddExpense("Revenue 2", 200);
+		    sut.AddExpense("Expense", 600);
+		    sut.AddExpense("Expense 2", 200);
 
-		    var revenues = sut.GetExpenses();
+		    var expenses = sut.GetExpenses();
 
-		    Assert.NotEmpty(revenues);
-		    Assert.Equal(2, revenues.Count);
+		    Assert.NotEmpty(expenses);
+		    Assert.Equal(2, expenses.Count);
 	    }
 
 		[Theory]

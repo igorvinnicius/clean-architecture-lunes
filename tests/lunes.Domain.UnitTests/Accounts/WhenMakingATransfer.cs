@@ -48,6 +48,20 @@ namespace lunes.Domain.UnitTests.Accounts
 			Assert.Equal(-100, sut.GetCurrentBalance());
 	    }
 
+		[Fact]
+		public void AccountShouldKeepAllExpenses()
+		{
+			var sut = new Account("Sut Account");
+
+			sut.AddExpense("Transefer", 600);
+			sut.AddExpense("Transfer 2", 200);
+
+			var transfers = sut.GetExpenses();
+
+			Assert.NotEmpty(transfers);
+			Assert.Equal(2, transfers.Count);
+		}
+
 		private Account CreateAccount(string name)
 	    {
 		    return new AccountBuilder()
