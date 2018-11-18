@@ -45,7 +45,18 @@ namespace lunes.UseCases.UnitTests.Accounts
 
 		}
 
-	    private void AssumeAccountInRepository()
+
+	    [Fact]
+	    public async void ShouldCallUpdateinRepositoryProperly()
+	    {
+		    AssumeAccountInRepository();
+
+			await _sut.Run("New Transfer", 100, _accountId, Guid.NewGuid());
+
+			_mockAccountRepository.Verify(x => x.Update(It.IsAny<Account>()));
+	    }
+
+		private void AssumeAccountInRepository()
 	    {
 		    _accountId = _account.Id;
 
