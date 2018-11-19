@@ -1,6 +1,5 @@
 ﻿using System;
 using lunes.Application.Repositories.Accounts;
-using lunes.Application.UseCases.Accounts.AddExpense;
 using lunes.Application.UseCases.Accounts.MakeTransfer;
 using lunes.Common.Tests.Builders;
 using lunes.Domain.Accounts;
@@ -9,7 +8,7 @@ using Xunit;
 
 namespace lunes.UseCases.UnitTests.Accounts
 {
-    public class WhenMakingATransfer
+	public class WhenMakingATransfer
     {
 
 	    private readonly Mock<IAccountReadOnlyRepository> _mockAccountReadOnlyRepository;
