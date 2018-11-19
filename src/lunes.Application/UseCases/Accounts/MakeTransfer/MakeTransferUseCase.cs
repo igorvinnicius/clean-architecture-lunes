@@ -21,6 +21,8 @@ namespace lunes.Application.UseCases.Accounts.MakeTransfer
 
 			account.MakeTransfer(name, amount, toAccountId);
 
+		    await _accountRepository.Update(account);
+
 			return new MakeTransferOutput(account.Balance);
 		}
     }
