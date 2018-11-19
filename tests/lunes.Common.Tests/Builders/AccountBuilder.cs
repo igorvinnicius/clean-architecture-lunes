@@ -42,9 +42,14 @@ namespace lunes.Common.Tests.Builders
 		    return this;
 	    }
 
-	    public Account Build()
+	    public Account Build(double initialBalance = 0)
 	    {
-			return  new Account(_name);
+			var account = new Account(_name);
+
+			if(initialBalance > 0)
+				account.AddRevenue("Inital Balance", initialBalance);
+
+		    return account;
 	    }
 
     }
