@@ -16,13 +16,16 @@ namespace lunes.Domain.UnitTests.Accounts
 		    var expectedFromAccountId = Guid.NewGuid();
 		    var expectedToAccountId = Guid.NewGuid();
 
-		    var sut = new Transfer(expectedName, expectedAmount, expectedFromAccountId, expectedToAccountId);
+		    var expectedOperationType = OperationType.Credit;
+
+		    var sut = new Transfer(expectedName, expectedOperationType, expectedAmount, expectedFromAccountId, expectedToAccountId);
 
 		    Assert.Equal(expectedName, sut.Name);
 		    Assert.Equal(expectedAmount, sut.Amount);
 		    Assert.Equal(expectedDate.Date, sut.Date.Date);
 		    Assert.Equal(expectedFromAccountId, sut.FromAccountId);
 		    Assert.Equal(expectedToAccountId, sut.ToAccountId);
+		    Assert.Equal(expectedOperationType, sut.OperationType);
 		}
     }
 }

@@ -9,5 +9,7 @@ namespace lunes.Domain.Accounts
 		DateTime Date { get; }
 
 		double Amount { get; }
+
+		OperationType  OperationType { get; }
 	}
 }
