@@ -1,6 +1,6 @@
 ﻿namespace lunes.Domain.Accounts
 {
-    public enum OperationType
+    public enum OperationNature
     {
 		Credit,
 		Debit

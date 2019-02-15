@@ -10,6 +10,6 @@ namespace lunes.Domain.Accounts
 
 		double Amount { get; }
 
-		OperationType  OperationType { get; }
+		OperationNature  OperationNature { get; }
 	}
 }

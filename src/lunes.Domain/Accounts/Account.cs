@@ -38,8 +38,8 @@ namespace lunes.Domain.Accounts
 
 	    public double GetCurrentBalance()
 	    {
-		    var creditOperations = _operations.Where(o => o.OperationType == OperationType.Credit).Sum(o => o.Amount);
-		    var debitOperations = _operations.Where(o => o.OperationType == OperationType.Debit).Sum(o => o.Amount);
+		    var creditOperations = _operations.Where(o => o.OperationNature == OperationNature.Credit).Sum(o => o.Amount);
+		    var debitOperations = _operations.Where(o => o.OperationNature == OperationNature.Debit).Sum(o => o.Amount);
 
 		    return creditOperations - debitOperations;
 	    }
@@ -69,14 +69,14 @@ namespace lunes.Domain.Accounts
 
 	    public void MakeTransfer(string name, double amount, Guid toAccountId)
 	    {
-			var transfer = new Transfer(name, OperationType.Debit, amount, this.Id, toAccountId);
+			var transfer = new Transfer(name, OperationNature.Debit, amount, this.Id, toAccountId);
 			_operations.Add(transfer);
 		   
 	    }
 
 	    public void ReceiveTransfer(string name, double amount, Guid fromAccountId)
 	    {
-			var transfer = new Transfer(name, OperationType.Credit, amount, fromAccountId, this.Id);
+			var transfer = new Transfer(name, OperationNature.Credit, amount, fromAccountId, this.Id);
 			_operations.Add(transfer);
 		}
     }

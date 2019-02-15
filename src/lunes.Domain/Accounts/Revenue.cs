@@ -7,14 +7,14 @@ namespace lunes.Domain.Accounts
 		public string Name { get; }
 		public DateTime Date { get; }
 		public double Amount { get; }
-		public OperationType OperationType { get; private set; }
+		public OperationNature OperationNature { get; private set; }
 
 		public Revenue(string name, double amount)
 		{
 			Name = name;
 			Date = DateTime.Now;
 			Amount = amount;
-			OperationType = OperationType.Credit;
+			OperationNature = OperationNature.Credit;
 		}
 	}
 }
