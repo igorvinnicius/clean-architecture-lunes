@@ -20,7 +20,24 @@ namespace lunes.Domain.UnitTests.Accounts
 
 	    }
 
-	    private Account CreateAccount(string name)
+	    [Theory]
+		[InlineData(100, 100, 200)]
+	    [InlineData(1055.30, 300, 1355.30)]
+	    [InlineData(-220, 100, -120)]
+	    [InlineData(-300, 500, 200)]
+		public void ShouldCalculateBalanceCorrectly(double intitalBalance, double amount, double expectedBalance)
+	    {
+		    var sut = CreateAccount("From Account");
+
+		    sut.AddRevenue("New Transfer", intitalBalance);
+
+			sut.ReceiveTransfer("New Transfer", amount, Guid.NewGuid());
+
+		    Assert.Equal(expectedBalance, sut.GetCurrentBalance());
+
+	    }
+
+		private Account CreateAccount(string name)
 	    {
 		    return new AccountBuilder()
 			    .WithId(Guid.NewGuid())
