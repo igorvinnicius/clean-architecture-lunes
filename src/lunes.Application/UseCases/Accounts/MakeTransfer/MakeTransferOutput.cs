@@ -2,13 +2,14 @@
 {
     public class MakeTransferOutput
     {
-	    public double Balance { get; }
-
 	    public double FromAccountBalance { get; set; }
 
-	    public MakeTransferOutput(double balance)
+	    public double ToAccountBalance { get; set; }
+
+	    public MakeTransferOutput(double fromAccountBalance, double toAccountBalance)
 	    {
-		    FromAccountBalance = balance;
+		    FromAccountBalance = fromAccountBalance;
+		    ToAccountBalance = toAccountBalance;
 	    }
 
 	}

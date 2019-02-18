@@ -49,16 +49,28 @@ namespace lunes.UseCases.UnitTests.Accounts
 
 		}
 
+	    [Fact]
+	    public async void ShouldCreditAmountInToAccountCorrectly()
+	    {
+		    AssumeAccountInRepository();
 
-	  //  [Fact]
-	  //  public async void ShouldCallUpdateinRepositoryProperly()
-	  //  {
-		 //   AssumeAccountInRepository();
+		    var makeTransferOutput = await _sut.Run("New Transfer", 100, _fromAccountId, _toAccountId);
 
-			//await _sut.Run("New Transfer", 100, _accountId, Guid.NewGuid());
+		    var expectedBalance = 100;
 
-			//_mockAccountRepository.Verify(x => x.Update(It.IsAny<Account>()));
-	    //}
+		    Assert.Equal(expectedBalance, makeTransferOutput.ToAccountBalance);
+
+	    }
+
+		//  [Fact]
+		//  public async void ShouldCallUpdateinRepositoryProperly()
+		//  {
+		//   AssumeAccountInRepository();
+
+		//await _sut.Run("New Transfer", 100, _accountId, Guid.NewGuid());
+
+		//_mockAccountRepository.Verify(x => x.Update(It.IsAny<Account>()));
+		//}
 
 		private void AssumeAccountInRepository()
 	    {

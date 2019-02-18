@@ -17,13 +17,17 @@ namespace lunes.Application.UseCases.Accounts.MakeTransfer
 
 		public async Task<MakeTransferOutput> Run(string name, double amount, Guid fromAccountId, Guid toAccountId)
 	    {
-		    var account = await this._accountReadOnlyRepository.GetAccount(fromAccountId);
+		    var fromAccount = await this._accountReadOnlyRepository.GetAccount(fromAccountId);
 
-			account.MakeTransfer(name, amount, toAccountId);
+		    var toAccount = await this._accountReadOnlyRepository.GetAccount(toAccountId);
 
-		    await _accountRepository.Update(account);
+		    fromAccount.MakeTransfer(name, amount, toAccountId);
 
-			return new MakeTransferOutput(account.GetCurrentBalance());
+			toAccount.ReceiveTransfer(name, amount, fromAccountId);
+
+		    await _accountRepository.Update(fromAccount);
+
+			return new MakeTransferOutput(fromAccount.GetCurrentBalance(), toAccount.GetCurrentBalance());
 		}
     }
 }
