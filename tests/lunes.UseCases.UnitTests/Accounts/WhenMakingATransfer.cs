@@ -62,15 +62,15 @@ namespace lunes.UseCases.UnitTests.Accounts
 
 	    }
 
-		//  [Fact]
-		//  public async void ShouldCallUpdateinRepositoryProperly()
-		//  {
-		//   AssumeAccountInRepository();
+		[Fact]
+		public async void ShouldCallUpdateinRepositoryProperly()
+		{
+			AssumeAccountInRepository();
 
-		//await _sut.Run("New Transfer", 100, _accountId, Guid.NewGuid());
+			await _sut.Run("New Transfer", 100, _fromAccountId, _toAccountId);
 
-		//_mockAccountRepository.Verify(x => x.Update(It.IsAny<Account>()));
-		//}
+			_mockAccountRepository.Verify(x => x.Update(It.IsAny<Account>()));
+		}
 
 		private void AssumeAccountInRepository()
 	    {
