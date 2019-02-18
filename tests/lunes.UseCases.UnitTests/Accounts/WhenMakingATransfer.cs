@@ -62,6 +62,25 @@ namespace lunes.UseCases.UnitTests.Accounts
 
 	    }
 
+	    [Theory]
+		[InlineData(100, 100, 100, 0, 200)]
+	    [InlineData(100, -100, 100, 0, 0)]
+	    [InlineData(-100, 100, 100, -200, 200)]
+	    //[InlineData(125.74, 0, 100, 25.74, 100)]
+		public async void ShouldDebitInFromAccountAndCreditAmountInToAccountCorrectly(double fromAccountInitialBalance, double toAccountInitalBalance, double amount, double expectedFromAccountBalance, double expectedToAccountBalance)
+	    {
+		    AssumeAccountInRepository();
+
+		    _fromAccount.AddRevenue("Initial Balance", fromAccountInitialBalance);
+
+		    _toAccount.AddRevenue("Initial Balance", toAccountInitalBalance);
+
+			var makeTransferOutput = await _sut.Run("New Transfer", amount, _fromAccountId, _toAccountId);
+
+			Assert.Equal(expectedFromAccountBalance, makeTransferOutput.FromAccountBalance);
+			Assert.Equal(expectedToAccountBalance, makeTransferOutput.ToAccountBalance);
+	    }
+
 		[Fact]
 		public async void ShouldCallUpdateinRepositoryProperly()
 		{
