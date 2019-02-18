@@ -23,7 +23,7 @@ namespace lunes.Application.UseCases.Accounts.MakeTransfer
 
 		    await _accountRepository.Update(account);
 
-			return new MakeTransferOutput(account.Balance);
+			return new MakeTransferOutput(account.GetCurrentBalance());
 		}
     }
 }

@@ -4,9 +4,11 @@
     {
 	    public double Balance { get; }
 
+	    public double FromAccountBalance { get; set; }
+
 	    public MakeTransferOutput(double balance)
 	    {
-		    Balance = balance;
+		    FromAccountBalance = balance;
 	    }
 
 	}
