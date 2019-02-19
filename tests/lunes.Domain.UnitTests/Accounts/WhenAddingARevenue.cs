@@ -3,7 +3,7 @@ using Xunit;
 
 namespace lunes.Domain.UnitTests.Accounts
 {
-    public class WhenAddingARevenue
+    public class WhenAddingARevenue : AccountDomainTestBase
     {
 	    [Fact]
 	    public void ShouldHaveABalanceOf100WhenAddingARevenueOf100AndCurrentBalanceIsZero()
@@ -18,9 +18,8 @@ namespace lunes.Domain.UnitTests.Accounts
 	    [Fact]
 	    public void ShouldHaveABalanceOf200WhenAddingARevenueOf100AndCurrentBalanceIs100()
 	    {
-		    var sut = new Account("Sut Account");
-
-		    sut.AddRevenue("Revenue", 100);
+			var sut = CreateAccount("Sut Account", 100);
+			
 			sut.AddRevenue("Revenue 2", 100);
 
 		    Assert.Equal(200, sut.GetCurrentBalance());
@@ -29,9 +28,9 @@ namespace lunes.Domain.UnitTests.Accounts
 	    [Fact]
 	    public void AccountShouldKeepAllRevenues()
 	    {
-		    var sut = new Account("Sut Account");
+			var sut = CreateAccount("Sut Account");
 
-		    sut.AddRevenue("Revenue", 100);
+			sut.AddRevenue("Revenue", 100);
 			sut.AddRevenue("Revenue 2", 500);
 
 		    var revenues = sut.GetRevenues();
@@ -47,9 +46,9 @@ namespace lunes.Domain.UnitTests.Accounts
 	    [InlineData(-2000, 4020, 2020)]
 	    public void ShouldCalculateBalanceCorrectly(double initialBalance, double expense, double expectedBalance)
 	    {
-		    var sut = new Account("Sut Account");
+			var sut = CreateAccount("Sut Account");
 
-		    sut.AddRevenue("Revenue", initialBalance);
+			sut.AddRevenue("Revenue", initialBalance);
 
 		    sut.AddRevenue("Revenue", expense);
 
