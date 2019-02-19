@@ -48,8 +48,12 @@ namespace lunes.Common.Tests.Builders
 
 			if(_initialBalance > 0)
 				account.AddRevenue("Initial Balance", _initialBalance);
+			
+			if (_initialBalance < 0)
+				account.AddExpense("Initial Balance", _initialBalance);
 
-		    return account;
+
+			return account;
 	    }
 
     }
