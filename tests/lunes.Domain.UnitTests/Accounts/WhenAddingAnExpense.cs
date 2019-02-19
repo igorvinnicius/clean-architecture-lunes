@@ -18,11 +18,9 @@ namespace lunes.Domain.UnitTests.Accounts
 	    [Fact]
 	    public void ShouldHaveABalanceOfZeroWhenAddingAnExpenseOf200AndCurrentBalanceIs200()
 	    {
-		    var sut = new Account("Sut Account");
+			var sut = CreateAccount("Sut Account", 200);
 
-		    sut.AddRevenue("Revenue", 200);
-
-		    sut.AddExpense("Expense", 200);
+			sut.AddExpense("Expense", 200);
 
 		    Assert.Equal(0, sut.GetCurrentBalance());
 	    }
@@ -30,11 +28,9 @@ namespace lunes.Domain.UnitTests.Accounts
 		[Fact]
 	    public void ShouldHaveABalanceOfMinus100WhenAddingAnExpenseOf300AndCurrentBalanceIs200()
 	    {
-		    var sut = new Account("Sut Account");
+			var sut = CreateAccount("Sut Account", 200);
 
-		    sut.AddRevenue("Revenue", 200);
-
-		    sut.AddExpense("Expense", 300);
+			sut.AddExpense("Expense", 300);
 
 		    Assert.Equal(-100, sut.GetCurrentBalance());
 	    }
@@ -42,9 +38,9 @@ namespace lunes.Domain.UnitTests.Accounts
 	    [Fact]
 	    public void AccountShouldKeepAllExpenses()
 	    {
-		    var sut = new Account("Sut Account");
+			var sut = CreateAccount("Sut Account");
 
-		    sut.AddExpense("Expense", 600);
+			sut.AddExpense("Expense", 600);
 		    sut.AddExpense("Expense 2", 200);
 
 		    var expenses = sut.GetExpenses();
@@ -60,9 +56,9 @@ namespace lunes.Domain.UnitTests.Accounts
 	    [InlineData(2000, 4020, -2020)]
 		public void ShouldCalculateBalanceCorrectly(double initialBalance, double expense, double expectedBalance)
 	    {
-		    var sut = new Account("Sut Account");
+			var sut = CreateAccount("Sut Account");
 
-		    sut.AddRevenue("Revenue", initialBalance);
+			sut.AddRevenue("Revenue", initialBalance);
 
 		    sut.AddExpense("Expense", expense);
 
