@@ -9,19 +9,19 @@ namespace lunes.Common.Tests.Builders
 
 	    public static string DefaultName = "New Account";
 
-	    public static double DefaultBalance = 0;
+	    public static double DefaultInitialBalance = 0;
 
 	    private Guid _id;
 
 	    private string _name;
 
-	    private double _balance;
+	    private double _initialBalance;
 
 		public AccountBuilder()
 		{
 			this._id = DefaultId;
 			this._name = DefaultName;
-			this._balance = DefaultBalance;
+			this._initialBalance = DefaultInitialBalance;
 		}
 
 		public AccountBuilder WithId(Guid id)
@@ -36,18 +36,18 @@ namespace lunes.Common.Tests.Builders
 		    return this;
 	    }
 
-	    public AccountBuilder WithBalance(double balance)
+	    public AccountBuilder WithInitialBalance(double balance)
 	    {
-		    this._balance = balance;
+		    this._initialBalance = balance;
 		    return this;
 	    }
 
-	    public Account Build(double initialBalance = 0)
+	    public Account Build()
 	    {
 			var account = new Account(_name);
 
-			if(initialBalance > 0)
-				account.AddRevenue("Inital Balance", initialBalance);
+			if(_initialBalance > 0)
+				account.AddRevenue("Initial Balance", _initialBalance);
 
 		    return account;
 	    }

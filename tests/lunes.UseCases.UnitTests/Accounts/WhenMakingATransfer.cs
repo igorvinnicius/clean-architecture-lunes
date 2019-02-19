@@ -31,7 +31,6 @@ namespace lunes.UseCases.UnitTests.Accounts
 		    _mockAccountRepository = new Mock<IAccountRepository>();
 
 		    _sut = new MakeTransferUseCase(_mockAccountReadOnlyRepository.Object, _mockAccountRepository.Object);
-
 	    }
 
 		[Fact]

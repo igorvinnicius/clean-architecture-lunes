@@ -3,14 +3,12 @@ using Xunit;
 
 namespace lunes.Domain.UnitTests.Accounts
 {
-    public class WhenAddingAnExpense
+    public class WhenAddingAnExpense : AccountDomainTestBase
     {
 	    [Fact]
 	    public void ShouldHaveABalanceOf100WhenAddingAnExpenseOf100AndCurrentBalanceIs200()
 	    {
-		    var sut = new Account("Sut Account");
-
-		    sut.AddRevenue("Revenue", 200);
+		    var sut = CreateAccount("Sut Account", 200);
 
 		    sut.AddExpense("Expense", 100);
 
