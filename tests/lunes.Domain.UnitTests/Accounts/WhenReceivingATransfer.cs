@@ -5,7 +5,7 @@ using Xunit;
 
 namespace lunes.Domain.UnitTests.Accounts
 {
-    public class WhenReceivingATransfer
+    public class WhenReceivingATransfer : AccountDomainTestBase
     {
 	    [Fact]
 	    public void ShouldHaveABalanceOf100WhenReceivingATransferOf100AndCurrentBalanceIs0()
@@ -27,9 +27,7 @@ namespace lunes.Domain.UnitTests.Accounts
 	    [InlineData(-300, 500, 200)]
 		public void ShouldCalculateBalanceCorrectly(double intitalBalance, double amount, double expectedBalance)
 	    {
-		    var sut = CreateAccount("From Account");
-
-		    sut.AddRevenue("New Transfer", intitalBalance);
+		    var sut = CreateAccount("From Account", initialBalance: intitalBalance);
 
 			sut.ReceiveTransfer("New Transfer", amount, Guid.NewGuid());
 
@@ -37,12 +35,6 @@ namespace lunes.Domain.UnitTests.Accounts
 
 	    }
 
-		private Account CreateAccount(string name)
-	    {
-		    return new AccountBuilder()
-			    .WithId(Guid.NewGuid())
-			    .WithName(name)
-			    .Build();
-	    }
+		
 	}
 }
