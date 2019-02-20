@@ -8,7 +8,7 @@ using Xunit;
 
 namespace lunes.UseCases.UnitTests.Accounts
 {
-	public class WhenMakingATransfer
+	public class WhenMakingATransfer : AccountUseCasesTestBase
     {
 
 	    private readonly Mock<IAccountReadOnlyRepository> _mockAccountReadOnlyRepository;
@@ -24,8 +24,8 @@ namespace lunes.UseCases.UnitTests.Accounts
 
 	    public WhenMakingATransfer()
 	    {
-		    _fromAccount = new AccountBuilder().Build();
-		    _toAccount = new AccountBuilder().Build();
+		    _fromAccount = CreateAccount("FromAccount");
+		    _toAccount = CreateAccount("ToAccount");
 
 			_mockAccountReadOnlyRepository = new Mock<IAccountReadOnlyRepository>();
 		    _mockAccountRepository = new Mock<IAccountRepository>();

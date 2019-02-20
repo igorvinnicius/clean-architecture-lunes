@@ -8,7 +8,7 @@ using Xunit;
 
 namespace lunes.UseCases.UnitTests.Accounts
 {
-	public class WhenAddingAnExpense
+	public class WhenAddingAnExpense : AccountUseCasesTestBase
     {
 	    private readonly Mock<IAccountReadOnlyRepository> _mockAccountReadOnlyRepository;
 	    private readonly Mock<IAccountRepository> _mockAccountRepository;
@@ -20,8 +20,7 @@ namespace lunes.UseCases.UnitTests.Accounts
 
 	    public WhenAddingAnExpense()
 	    {
-			_account = new AccountBuilder().Build();
-			_account.AddRevenue("Initial Balance", 400);
+		    _account = CreateAccount("New Account", 400);
 
 		    _mockAccountReadOnlyRepository = new Mock<IAccountReadOnlyRepository>();
 		    _mockAccountRepository = new Mock<IAccountRepository>();
