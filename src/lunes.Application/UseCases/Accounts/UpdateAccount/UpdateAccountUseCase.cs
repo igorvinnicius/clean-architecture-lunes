@@ -7,12 +7,12 @@ namespace lunes.Application.UseCases.Accounts.UpdateAccount
     public class UpdateAccountUseCase
     {
 	    private readonly IAccountReadOnlyRepository _accountReadOnlyRepository;
-	    private readonly IAccountRepository _accountRepository;
+	    private readonly IAccountWriteOnlyRepository _accountWriteOnlyRepository;
 
-		public UpdateAccountUseCase(IAccountReadOnlyRepository accountReadOnlyRepository, IAccountRepository accountRepository)
+		public UpdateAccountUseCase(IAccountReadOnlyRepository accountReadOnlyRepository, IAccountWriteOnlyRepository accountWriteOnlyRepository)
 	    {
 		    this._accountReadOnlyRepository = accountReadOnlyRepository;
-		    this._accountRepository = accountRepository;
+		    this._accountWriteOnlyRepository = accountWriteOnlyRepository;
 	    }
 
 	    public async Task<UpdateAccountOutput> Run(Guid accountId, string accountName)
@@ -21,7 +21,7 @@ namespace lunes.Application.UseCases.Accounts.UpdateAccount
 
 		    account.UpdateName(accountName);
 
-		    await _accountRepository.Update(account);
+		    await _accountWriteOnlyRepository.Update(account);
 
 			return new UpdateAccountOutput(account.Name);
 	    }

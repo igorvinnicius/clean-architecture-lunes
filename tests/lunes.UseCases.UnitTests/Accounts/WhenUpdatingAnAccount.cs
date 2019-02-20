@@ -11,7 +11,7 @@ namespace lunes.UseCases.UnitTests.Accounts
     public class WhenUpdatingAnAccount : AccountUseCasesTestBase
     {
 	    private readonly Mock<IAccountReadOnlyRepository> _mockAccountReadOnlyRepository;
-	    private readonly Mock<IAccountRepository> _mockAccountRepository;
+	    private readonly Mock<IAccountWriteOnlyRepository> _mockAccountRepository;
 
 	    private Account _account;
 	    private UpdateAccountUseCase _sut;
@@ -19,7 +19,7 @@ namespace lunes.UseCases.UnitTests.Accounts
 		public WhenUpdatingAnAccount()
 	    {
 			_mockAccountReadOnlyRepository = new Mock<IAccountReadOnlyRepository>();
-			_mockAccountRepository = new Mock<IAccountRepository>();
+			_mockAccountRepository = new Mock<IAccountWriteOnlyRepository>();
 
 			_sut = new UpdateAccountUseCase(_mockAccountReadOnlyRepository.Object, _mockAccountRepository.Object);
 		}

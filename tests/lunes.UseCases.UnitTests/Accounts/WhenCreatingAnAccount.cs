@@ -9,11 +9,11 @@ namespace lunes.UseCases.UnitTests.Accounts
 {
     public class WhenCreatingAnAccount
     {
-	    private readonly Mock<IAccountRepository> _mockAccountRepository;
+	    private readonly Mock<IAccountWriteOnlyRepository> _mockAccountRepository;
 		
 	    public WhenCreatingAnAccount()
 	    {
-		    _mockAccountRepository = new Mock<IAccountRepository>();
+		    _mockAccountRepository = new Mock<IAccountWriteOnlyRepository>();
 	    }
 
 	    [Fact]

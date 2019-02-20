@@ -6,18 +6,18 @@ namespace lunes.Application.UseCases.Accounts.CreateAccount
 {
     public class CreateAccountUseCase
     {
-	    private readonly IAccountRepository _accountRepository;
+	    private readonly IAccountWriteOnlyRepository _accountWriteOnlyRepository;
 
-		public CreateAccountUseCase(IAccountRepository accountRepository)
+		public CreateAccountUseCase(IAccountWriteOnlyRepository accountWriteOnlyRepository)
 		{
-			_accountRepository = accountRepository;
+			_accountWriteOnlyRepository = accountWriteOnlyRepository;
 		}
 
 		public async Task<CreateAccountOutput> Run(string accountName)
 	    {
 		    var newAccount = new Account(accountName);
 
-		    await _accountRepository.Add(newAccount);
+		    await _accountWriteOnlyRepository.Add(newAccount);
 
 			return new CreateAccountOutput(newAccount.Name, newAccount.Balance);
 	    }

@@ -12,7 +12,7 @@ namespace lunes.UseCases.UnitTests.Accounts
     {
 
 	    private readonly Mock<IAccountReadOnlyRepository> _mockAccountReadOnlyRepository;
-	    private readonly Mock<IAccountRepository> _mockAccountRepository;
+	    private readonly Mock<IAccountWriteOnlyRepository> _mockAccountRepository;
 
 	    private Guid _fromAccountId;
 	    private readonly Account _fromAccount;
@@ -28,7 +28,7 @@ namespace lunes.UseCases.UnitTests.Accounts
 		    _toAccount = CreateAccount("ToAccount");
 
 			_mockAccountReadOnlyRepository = new Mock<IAccountReadOnlyRepository>();
-		    _mockAccountRepository = new Mock<IAccountRepository>();
+		    _mockAccountRepository = new Mock<IAccountWriteOnlyRepository>();
 
 		    _sut = new MakeTransferUseCase(_mockAccountReadOnlyRepository.Object, _mockAccountRepository.Object);
 	    }

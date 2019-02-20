@@ -3,7 +3,7 @@ using lunes.Domain.Accounts;
 
 namespace lunes.Application.Repositories.Accounts
 {
-    public interface IAccountRepository
+    public interface IAccountWriteOnlyRepository
     {
 	    Task Add(Account account);
 	    Task Update(Account account);

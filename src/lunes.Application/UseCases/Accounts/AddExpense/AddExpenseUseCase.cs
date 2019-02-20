@@ -7,12 +7,12 @@ namespace lunes.Application.UseCases.Accounts.AddExpense
 	public class AddExpenseUseCase
     {
 	    private readonly IAccountReadOnlyRepository _accountReadOnlyRepository;
-	    private readonly IAccountRepository _accountRepository;
+	    private readonly IAccountWriteOnlyRepository _accountWriteOnlyRepository;
 
-		public AddExpenseUseCase(IAccountReadOnlyRepository accountReadOnlyRepository, IAccountRepository accountRepository)
+		public AddExpenseUseCase(IAccountReadOnlyRepository accountReadOnlyRepository, IAccountWriteOnlyRepository accountWriteOnlyRepository)
 		{
 			_accountReadOnlyRepository = accountReadOnlyRepository;
-			_accountRepository = accountRepository;
+			_accountWriteOnlyRepository = accountWriteOnlyRepository;
 		}
 
 		public async Task<AddExpenseOutput> Run(Guid accountId, double value)
@@ -21,7 +21,7 @@ namespace lunes.Application.UseCases.Accounts.AddExpense
 
 		    account.AddExpense("New Expense", value);
 
-		    await _accountRepository.Update(account);
+		    await _accountWriteOnlyRepository.Update(account);
 
 		    return new AddExpenseOutput(account.GetCurrentBalance());
 		}

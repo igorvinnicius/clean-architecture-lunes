@@ -11,7 +11,7 @@ namespace lunes.UseCases.UnitTests.Accounts
     public class WhenAddingARevenue : AccountUseCasesTestBase
     {
 	    private readonly Mock<IAccountReadOnlyRepository> _mockAccountReadOnlyRepository;
-	    private readonly Mock<IAccountRepository> _mockAccountRepository;
+	    private readonly Mock<IAccountWriteOnlyRepository> _mockAccountRepository;
 
 	    private Guid _accountId;
 	    private Account _account;
@@ -21,7 +21,7 @@ namespace lunes.UseCases.UnitTests.Accounts
 		public WhenAddingARevenue()
 	    {
 			_mockAccountReadOnlyRepository = new Mock<IAccountReadOnlyRepository>();
-		    _mockAccountRepository = new Mock<IAccountRepository>();
+		    _mockAccountRepository = new Mock<IAccountWriteOnlyRepository>();
 
 			_sut = new AddRevenueUseCase(_mockAccountReadOnlyRepository.Object, _mockAccountRepository.Object);
 		}

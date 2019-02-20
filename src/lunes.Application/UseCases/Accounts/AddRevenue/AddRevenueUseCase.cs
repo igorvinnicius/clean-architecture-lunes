@@ -7,12 +7,12 @@ namespace lunes.Application.UseCases.Accounts.AddRevenue
     public class AddRevenueUseCase
     {
 	    private readonly IAccountReadOnlyRepository _accountReadOnlyRepository;
-	    private readonly IAccountRepository _accountRepository;
+	    private readonly IAccountWriteOnlyRepository _accountWriteOnlyRepository;
 
-	    public AddRevenueUseCase(IAccountReadOnlyRepository accountReadOnlyRepository, IAccountRepository accountRepository)
+	    public AddRevenueUseCase(IAccountReadOnlyRepository accountReadOnlyRepository, IAccountWriteOnlyRepository accountWriteOnlyRepository)
 	    {
 		    this._accountReadOnlyRepository = accountReadOnlyRepository;
-		    this._accountRepository = accountRepository;
+		    this._accountWriteOnlyRepository = accountWriteOnlyRepository;
 	    }
 
 		public async Task<AddRevenueOutput> Run(Guid accountId, double expectedBalance)
@@ -21,7 +21,7 @@ namespace lunes.Application.UseCases.Accounts.AddRevenue
 
 			account.AddRevenue("New Revenue", expectedBalance);
 
-		    await _accountRepository.Update(account);
+		    await _accountWriteOnlyRepository.Update(account);
 
 			return new AddRevenueOutput(account.GetCurrentBalance());
 	    }

@@ -11,7 +11,7 @@ namespace lunes.UseCases.UnitTests.Accounts
 	public class WhenAddingAnExpense : AccountUseCasesTestBase
     {
 	    private readonly Mock<IAccountReadOnlyRepository> _mockAccountReadOnlyRepository;
-	    private readonly Mock<IAccountRepository> _mockAccountRepository;
+	    private readonly Mock<IAccountWriteOnlyRepository> _mockAccountRepository;
 
 	    private Guid _accountId;
 	    private readonly Account _account;
@@ -23,7 +23,7 @@ namespace lunes.UseCases.UnitTests.Accounts
 		    _account = CreateAccount("New Account", 400);
 
 		    _mockAccountReadOnlyRepository = new Mock<IAccountReadOnlyRepository>();
-		    _mockAccountRepository = new Mock<IAccountRepository>();
+		    _mockAccountRepository = new Mock<IAccountWriteOnlyRepository>();
 
 			_sut = new AddExpenseUseCase(_mockAccountReadOnlyRepository.Object, _mockAccountRepository.Object);
 

@@ -7,12 +7,12 @@ namespace lunes.Application.UseCases.Accounts.MakeTransfer
     public class MakeTransferUseCase
     {
 	    private readonly IAccountReadOnlyRepository _accountReadOnlyRepository;
-	    private readonly IAccountRepository _accountRepository;
+	    private readonly IAccountWriteOnlyRepository _accountWriteOnlyRepository;
 
-	    public MakeTransferUseCase(IAccountReadOnlyRepository accountReadOnlyRepository, IAccountRepository accountRepository)
+	    public MakeTransferUseCase(IAccountReadOnlyRepository accountReadOnlyRepository, IAccountWriteOnlyRepository accountWriteOnlyRepository)
 	    {
 		    _accountReadOnlyRepository = accountReadOnlyRepository;
-		    _accountRepository = accountRepository;
+		    _accountWriteOnlyRepository = accountWriteOnlyRepository;
 	    }
 
 		public async Task<MakeTransferOutput> Run(string name, double amount, Guid fromAccountId, Guid toAccountId)
@@ -25,7 +25,7 @@ namespace lunes.Application.UseCases.Accounts.MakeTransfer
 
 			toAccount.ReceiveTransfer(name, amount, fromAccountId);
 
-		    await _accountRepository.Update(fromAccount);
+		    await _accountWriteOnlyRepository.Update(fromAccount);
 
 			return new MakeTransferOutput(fromAccount.GetCurrentBalance(), toAccount.GetCurrentBalance());
 		}
