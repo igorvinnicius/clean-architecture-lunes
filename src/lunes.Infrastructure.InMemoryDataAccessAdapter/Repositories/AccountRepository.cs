@@ -22,14 +22,19 @@ namespace lunes.Infrastructure.InMemoryDataAccessAdapter.Repositories
 		    return await Task.FromResult<Account>(account);
 	    }
 
-	    public Task Add(Account account)
+	    public async Task Add(Account account)
 	    {
-		    throw new NotImplementedException();
+		    _context.Accounts.Add(account);
+
+		    await Task.CompletedTask;
 	    }
 
-	    public Task Update(Account account)
+	    public async Task Update(Account account)
 	    {
-		    throw new NotImplementedException();
+		    var accountToUpdate = _context.Accounts.SingleOrDefault(a => a.Id == account.Id);
+		    accountToUpdate = account;
+
+		    await Task.CompletedTask;
 	    }
     }
 }
