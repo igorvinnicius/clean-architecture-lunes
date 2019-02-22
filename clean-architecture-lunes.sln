@@ -23,7 +23,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastru
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataAccessAdapters", "DataAccessAdapters", "{35101855-946E-4DA1-A8E9-7A26442021F6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "lunes.Infrastructure.InMemoryDataAccessAdapter", "src\lunes.Infrastructure.InMemoryDataAccessAdapter\lunes.Infrastructure.InMemoryDataAccessAdapter.csproj", "{FDE39DFC-6235-420B-B661-495F9A5C661B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "lunes.Infrastructure.InMemoryDataAccessAdapter", "src\lunes.Infrastructure.InMemoryDataAccessAdapter\lunes.Infrastructure.InMemoryDataAccessAdapter.csproj", "{FDE39DFC-6235-420B-B661-495F9A5C661B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{856719E9-1200-466F-B0A9-F4B5E46081FC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "lunes.WepApi", "src\lunes.WepApi\lunes.WepApi.csproj", "{91B83155-B254-494A-BE2D-F58AC342A73E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -55,6 +59,10 @@ Global
 		{FDE39DFC-6235-420B-B661-495F9A5C661B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FDE39DFC-6235-420B-B661-495F9A5C661B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FDE39DFC-6235-420B-B661-495F9A5C661B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91B83155-B254-494A-BE2D-F58AC342A73E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91B83155-B254-494A-BE2D-F58AC342A73E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91B83155-B254-494A-BE2D-F58AC342A73E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91B83155-B254-494A-BE2D-F58AC342A73E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -67,6 +75,7 @@ Global
 		{AA80A088-CFF5-4821-90F2-ACE2D05F36AC} = {BE6768F4-4F81-4CAA-9E3E-B519DBC19C18}
 		{35101855-946E-4DA1-A8E9-7A26442021F6} = {1C57F862-E7C3-4044-B553-16C1422A9581}
 		{FDE39DFC-6235-420B-B661-495F9A5C661B} = {35101855-946E-4DA1-A8E9-7A26442021F6}
+		{91B83155-B254-494A-BE2D-F58AC342A73E} = {856719E9-1200-466F-B0A9-F4B5E46081FC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B9C599AA-17AA-48D7-836E-4BAD5D5BB976}
