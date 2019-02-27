@@ -5,8 +5,8 @@ using lunes.Domain.Accounts;
 
 namespace lunes.Application.UseCases.Accounts.ListAccounts
 {
-    public class ListAccountsUseCase
-    {
+    public class ListAccountsUseCase : IListAccountsUseCase
+	{
 	    private readonly IAccountReadOnlyRepository _accountReadOnlyRepository;
 
 	    public ListAccountsUseCase(IAccountReadOnlyRepository accountReadOnlyRepository)
@@ -14,9 +14,11 @@ namespace lunes.Application.UseCases.Accounts.ListAccounts
 		    _accountReadOnlyRepository = accountReadOnlyRepository;
 	    }
 
-		public async Task<IEnumerable<Account>> Run()
+		public async Task<ListAccountsOutput> Run()
 		{
-			return await _accountReadOnlyRepository.GetAllAccounts();
+			var accounts = await _accountReadOnlyRepository.GetAllAccounts();
+
+			return new ListAccountsOutput(accounts);
 		}
     }
 }

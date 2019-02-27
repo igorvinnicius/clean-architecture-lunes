@@ -28,10 +28,10 @@ namespace lunes.UseCases.UnitTests.Accounts
 	    {
 			AssumeAccountInRepository();
 			
-			var accounts = await _sut.Run();
+			var listAccountsOutput = await _sut.Run();
 
-			Assert.Equal(_accountsToAssume.Count, accounts.Count());
-			Assert.True(_accountsToAssume.SequenceEqual(accounts.ToList()));
+			Assert.Equal(_accountsToAssume.Count, listAccountsOutput.Accounts.Count());
+			Assert.True(_accountsToAssume.SequenceEqual(listAccountsOutput.Accounts.ToList()));
 	    }
 
 	    private void AssumeAccountInRepository()

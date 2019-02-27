@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using lunes.Application.Repositories.Accounts;
@@ -20,6 +21,11 @@ namespace lunes.Infrastructure.InMemoryDataAccessAdapter.Repositories
 		    var account =  _context.Accounts.SingleOrDefault(a => a.Id == accountId);
 
 		    return await Task.FromResult<Account>(account);
+	    }
+
+	    public async Task<IEnumerable<Account>> GetAllAccounts()
+	    {
+		    return await Task.FromResult<List<Account>>(_context.Accounts.ToList()); ;
 	    }
 
 	    public async Task Add(Account account)
