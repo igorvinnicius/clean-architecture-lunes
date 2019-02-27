@@ -4,7 +4,7 @@ using lunes.Domain.Accounts;
 
 namespace lunes.Application.UseCases.Accounts.CreateAccount
 {
-    public class CreateAccountUseCase
+    public class CreateAccountUseCase : ICreateAccountUseCase
     {
 	    private readonly IAccountWriteOnlyRepository _accountWriteOnlyRepository;
 

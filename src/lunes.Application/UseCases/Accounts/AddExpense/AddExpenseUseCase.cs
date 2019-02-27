@@ -4,7 +4,7 @@ using lunes.Application.Repositories.Accounts;
 
 namespace lunes.Application.UseCases.Accounts.AddExpense
 {
-	public class AddExpenseUseCase
+	public class AddExpenseUseCase : IAddExpenseUseCase
     {
 	    private readonly IAccountReadOnlyRepository _accountReadOnlyRepository;
 	    private readonly IAccountWriteOnlyRepository _accountWriteOnlyRepository;

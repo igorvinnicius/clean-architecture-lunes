@@ -4,7 +4,7 @@ using lunes.Application.Repositories.Accounts;
 
 namespace lunes.Application.UseCases.Accounts.MakeTransfer
 {
-    public class MakeTransferUseCase
+    public class MakeTransferUseCase : IMakeTransferUseCase
     {
 	    private readonly IAccountReadOnlyRepository _accountReadOnlyRepository;
 	    private readonly IAccountWriteOnlyRepository _accountWriteOnlyRepository;
