@@ -15,7 +15,7 @@ namespace lunes.UseCases.UnitTests.Accounts
 
 	    private List<Account> _accountsToAssume;
 
-	    private readonly ListAccountsUseCase _sut;
+	    private readonly IListAccountsUseCase _sut;
 
 	    public WhenListingAccounts()
 	    {

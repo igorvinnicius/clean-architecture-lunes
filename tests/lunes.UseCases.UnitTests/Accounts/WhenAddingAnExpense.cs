@@ -16,7 +16,7 @@ namespace lunes.UseCases.UnitTests.Accounts
 	    private Guid _accountId;
 	    private readonly Account _account;
 
-	    private readonly AddExpenseUseCase _sut;
+	    private readonly IAddExpenseUseCase _sut;
 
 	    public WhenAddingAnExpense()
 	    {

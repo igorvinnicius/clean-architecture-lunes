@@ -14,7 +14,7 @@ namespace lunes.UseCases.UnitTests.Accounts
 	    private readonly Mock<IAccountWriteOnlyRepository> _mockAccountRepository;
 
 	    private Account _account;
-	    private UpdateAccountUseCase _sut;
+	    private IUpdateAccountUseCase _sut;
 
 		public WhenUpdatingAnAccount()
 	    {

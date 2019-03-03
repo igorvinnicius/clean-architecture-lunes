@@ -16,7 +16,7 @@ namespace lunes.UseCases.UnitTests.Accounts
 	    private Guid _accountId;
 	    private Account _account;
 
-	    private AddRevenueUseCase _sut;
+	    private IAddRevenueUseCase _sut;
 
 		public WhenAddingARevenue()
 	    {

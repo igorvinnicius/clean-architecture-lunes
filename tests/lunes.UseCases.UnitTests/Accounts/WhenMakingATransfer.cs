@@ -20,7 +20,7 @@ namespace lunes.UseCases.UnitTests.Accounts
 	    private Guid _toAccountId;
 	    private readonly Account _toAccount;
 
-		private readonly MakeTransferUseCase _sut;
+		private readonly IMakeTransferUseCase _sut;
 
 	    public WhenMakingATransfer()
 	    {
