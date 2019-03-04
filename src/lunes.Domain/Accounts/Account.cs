@@ -40,7 +40,7 @@ namespace lunes.Domain.Accounts
 	    {
 		    var creditOperations = _operations.Where(o => o.OperationNature == OperationNature.Credit).Sum(o => o.Amount);
 		    var debitOperations = _operations.Where(o => o.OperationNature == OperationNature.Debit).Sum(o => o.Amount);
-
+		
 		    return creditOperations - debitOperations;
 	    }
 
