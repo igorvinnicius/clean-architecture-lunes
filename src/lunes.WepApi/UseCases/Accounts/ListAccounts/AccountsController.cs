@@ -1,10 +1,30 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Threading.Tasks;
+using lunes.Application.UseCases.Accounts.ListAccounts;
+using Microsoft.AspNetCore.Mvc;
 
 namespace lunes.WepApi.UseCases.Accounts.ListAccounts
 {
 	[Route("api/[controller]")]
 	public class AccountsController : Controller
-    {
+	{
+		private readonly IListAccountsUseCase _listAccountsUseCase;
+		private readonly Presenter _presenter;
 
+		public AccountsController()
+		{
+			_presenter = new Presenter();
+		}
+
+		[HttpGet("list", Name = "List" )]
+	    public async Task<IActionResult> List()
+	    {
+		 //   var listAccountsOutput = await _listAccountsUseCase.Run();
+
+			//_presenter.Fill(null);
+
+		    //return _presenter.ViewModel;
+
+		    return Ok();
+	    }
     }
 }
