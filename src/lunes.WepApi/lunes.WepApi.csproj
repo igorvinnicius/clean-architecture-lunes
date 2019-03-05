@@ -18,6 +18,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\lunes.Application\lunes.Application.csproj" />
+    <ProjectReference Include="..\lunes.Infrastructure.DependencyInjection\lunes.Infrastructure.DependencyInjection.csproj" />
   </ItemGroup>
 
 </Project>

@@ -10,21 +10,22 @@ namespace lunes.WepApi.UseCases.Accounts.ListAccounts
 		private readonly IListAccountsUseCase _listAccountsUseCase;
 		private readonly Presenter _presenter;
 
-		public AccountsController()
+		public AccountsController(IListAccountsUseCase listAccountsUseCase)
 		{
+			_listAccountsUseCase = listAccountsUseCase;
 			_presenter = new Presenter();
 		}
 
 		[HttpGet("list", Name = "List" )]
 	    public async Task<IActionResult> List()
 	    {
-		 //   var listAccountsOutput = await _listAccountsUseCase.Run();
+			var listAccountsOutput = await _listAccountsUseCase.Run();
 
-			//_presenter.Fill(null);
+			_presenter.Fill(listAccountsOutput);
 
-		    //return _presenter.ViewModel;
+			return _presenter.ViewModel;
 
-		    return Ok();
+			//return Ok();
 	    }
     }
 }

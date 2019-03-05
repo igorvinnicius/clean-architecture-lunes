@@ -11,9 +11,10 @@ namespace lunes.Infrastructure.InMemoryDataAccessAdapter.Repositories
     {
 	    private readonly Context _context;
 
-	    public AccountRepository(Context context)
+	    public AccountRepository()
 	    {
-		    _context = context;
+		    _context = new Context();
+			
 	    }
 
 	    public async Task<Account> GetAccount(Guid accountId)
