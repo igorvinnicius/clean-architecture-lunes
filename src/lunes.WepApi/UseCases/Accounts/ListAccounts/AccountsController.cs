@@ -24,8 +24,7 @@ namespace lunes.WepApi.UseCases.Accounts.ListAccounts
 			_presenter.Fill(listAccountsOutput);
 
 			return _presenter.ViewModel;
-
-			//return Ok();
+			
 	    }
     }
 }

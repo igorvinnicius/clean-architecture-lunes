@@ -26,8 +26,7 @@ namespace lunes.WepApi
         {
             services.AddMvc();
 
-            Container.InstallServicess(services);
-
+            Container.InstallServices(services);
 			
         }
 
