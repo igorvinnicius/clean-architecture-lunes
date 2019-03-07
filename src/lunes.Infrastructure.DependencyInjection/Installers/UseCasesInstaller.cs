@@ -1,4 +1,5 @@
-﻿using lunes.Application.UseCases.Accounts.ListAccounts;
+﻿using lunes.Application.UseCases.Accounts.CreateAccount;
+using lunes.Application.UseCases.Accounts.ListAccounts;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace lunes.Infrastructure.DependencyInjection.Installers
@@ -8,6 +9,8 @@ namespace lunes.Infrastructure.DependencyInjection.Installers
 	    public static void Install(IServiceCollection servicesCollection)
 	    {
 		    servicesCollection.AddScoped<IListAccountsUseCase, ListAccountsUseCase>();
+
+		    servicesCollection.AddScoped<ICreateAccountUseCase, CreateAccountUseCase>();
 		}
     }
 }
