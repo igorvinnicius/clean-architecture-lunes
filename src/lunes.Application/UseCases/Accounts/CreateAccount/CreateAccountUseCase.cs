@@ -19,7 +19,7 @@ namespace lunes.Application.UseCases.Accounts.CreateAccount
 
 		    await _accountWriteOnlyRepository.Add(newAccount);
 
-			return new CreateAccountOutput(newAccount.Name, newAccount.Balance);
+			return new CreateAccountOutput(newAccount.Id, newAccount.Name, newAccount.Balance);
 	    }
     }
 }

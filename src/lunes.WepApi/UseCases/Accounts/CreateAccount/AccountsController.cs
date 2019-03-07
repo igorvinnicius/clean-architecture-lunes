@@ -8,20 +8,24 @@ namespace lunes.WepApi.UseCases.Accounts.CreateAccount
 	public class AccountsController : Controller
 	{
 		private readonly ICreateAccountUseCase _createAccountUseCase;
+		private readonly Presenter _presenter;
 
 
 		public AccountsController(ICreateAccountUseCase createAccountUseCase)
 		{
 			_createAccountUseCase = createAccountUseCase;
+			_presenter = new Presenter();
 		}
 
 	    [HttpPost]
 	    public async Task<IActionResult> Post([FromBody]CreateAccountRequest createAccountRequest)
 	    {
+		    var output = await _createAccountUseCase.Run(createAccountRequest.Name);
 
-		    return await Task.FromResult(Ok());
+			_presenter.Fill(output);
 
-		    //return Ok();
+		    return _presenter.ViewModel;
+		   
 	    }
     }
 }
