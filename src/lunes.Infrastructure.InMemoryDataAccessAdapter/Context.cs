@@ -3,7 +3,7 @@ using lunes.Domain.Accounts;
 
 namespace lunes.Infrastructure.InMemoryDataAccessAdapter
 {
-    public class Context
+    public class Context : IContext
     {
 	    public Context()
 	    {

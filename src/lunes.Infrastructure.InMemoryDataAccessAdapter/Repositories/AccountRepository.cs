@@ -9,11 +9,11 @@ namespace lunes.Infrastructure.InMemoryDataAccessAdapter.Repositories
 {
     public class AccountRepository : IAccountReadOnlyRepository, IAccountWriteOnlyRepository
     {
-	    private readonly Context _context;
+	    private readonly IContext _context;
 
-	    public AccountRepository()
+	    public AccountRepository(IContext context)
 	    {
-		    _context = new Context();
+		    _context = context;
 			
 	    }
 
