@@ -23,7 +23,7 @@ namespace lunes.Application.UseCases.Accounts.UpdateAccount
 
 		    await _accountWriteOnlyRepository.Update(account);
 
-			return new UpdateAccountOutput(account.Name);
+			return new UpdateAccountOutput(account.Id, account.Name);
 	    }
     }
 }

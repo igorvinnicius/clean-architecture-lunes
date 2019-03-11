@@ -2,5 +2,6 @@
 {
     public class UpdateAccountRequest
     {
+	    public string Name { get; set; }
     }
 }

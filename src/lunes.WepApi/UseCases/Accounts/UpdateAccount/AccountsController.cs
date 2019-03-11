@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using lunes.Application.UseCases.Accounts.UpdateAccount;
 using Microsoft.AspNetCore.Mvc;
 
@@ -16,10 +17,14 @@ namespace lunes.WepApi.UseCases.Accounts.UpdateAccount
 			_presenter = new Presenter();
 	    }
 
-		[HttpPatch("Update")]
-	    public async Task<IActionResult> Update([FromBody]UpdateAccountRequest updateAccountRequest)
+		[HttpPut("{id}")]
+	    public async Task<IActionResult> Update(Guid id, [FromBody]UpdateAccountRequest updateAccountRequest)
 	    {
-		    return await Task.FromResult(Ok());
+		    var output = await _updateAccountUseCase.Run(id, updateAccountRequest.Name);
+
+			_presenter.Fill(output);
+
+			return _presenter.ViewModel;
 	    }
 	}
 }
