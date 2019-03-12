@@ -11,6 +11,8 @@ namespace lunes.Domain.Accounts
 	    public string Name { get; private set; }
 	    public double Balance { get; private set; }
 
+	    public ICollection<IOperation> Operations => _operations;
+
 	    private ICollection<IOperation> _operations;
 
 		public Account(string name)
