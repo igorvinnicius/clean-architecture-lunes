@@ -23,7 +23,7 @@ namespace lunes.Application.UseCases.Accounts.AddRevenue
 
 		    await _accountWriteOnlyRepository.Update(account);
 
-			return new AddRevenueOutput(account.GetCurrentBalance());
+			return new AddRevenueOutput(account.Id, account.GetCurrentBalance());
 	    }
     }
 }

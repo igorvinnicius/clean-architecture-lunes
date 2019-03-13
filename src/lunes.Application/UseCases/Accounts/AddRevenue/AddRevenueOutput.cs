@@ -1,11 +1,16 @@
-﻿namespace lunes.Application.UseCases.Accounts.AddRevenue
+﻿using System;
+
+namespace lunes.Application.UseCases.Accounts.AddRevenue
 {
     public class AddRevenueOutput
     {
-	    public double Balance { get; }
+		public Guid AccountId { get; set; }
 
-		public AddRevenueOutput(double balance)
+		public double Balance { get; }
+
+		public AddRevenueOutput(Guid accountId, double balance)
 		{
+			AccountId = accountId;
 			Balance = balance;
 		}
 	}
