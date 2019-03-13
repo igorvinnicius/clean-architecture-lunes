@@ -39,7 +39,8 @@ namespace lunes.Infrastructure.InMemoryDataAccessAdapter.Repositories
 	    public async Task Update(Account account)
 	    {
 		    var accountToUpdate = _context.Accounts.SingleOrDefault(a => a.Id == account.Id);
-		    accountToUpdate.UpdateName(account.Name);
+		    accountToUpdate = account;
+
 
 		    await Task.CompletedTask;
 	    }
