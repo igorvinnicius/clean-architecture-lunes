@@ -33,7 +33,7 @@ namespace lunes.UseCases.UnitTests.Accounts
 
 		    var expectedBalance = 200;
 
-		    var addRevenueOutput =  await _sut.Run(_accountId, expectedBalance);
+		    var addRevenueOutput =  await _sut.Run(_accountId, "New Revenue", expectedBalance);
 
 			Assert.Equal(expectedBalance, addRevenueOutput.Balance);
 
@@ -44,7 +44,7 @@ namespace lunes.UseCases.UnitTests.Accounts
 	    {
 		    AssumeAccountInRepository();
 
-		    await _sut.Run(_account.Id, 100);
+		    await _sut.Run(_account.Id, "New Revenue", 100);
 
 		    _mockAccountRepository.Verify(x => x.Update(It.IsAny<Account>()));
 	    }

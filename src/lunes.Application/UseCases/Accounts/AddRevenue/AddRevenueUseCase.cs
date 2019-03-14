@@ -15,11 +15,11 @@ namespace lunes.Application.UseCases.Accounts.AddRevenue
 		    this._accountWriteOnlyRepository = accountWriteOnlyRepository;
 	    }
 
-		public async Task<AddRevenueOutput> Run(Guid accountId, double expectedBalance)
+		public async Task<AddRevenueOutput> Run(Guid accountId, string name, double expectedBalance)
 	    {
 		    var account = await this._accountReadOnlyRepository.GetAccount(accountId);
 
-			account.AddRevenue("New Revenue", expectedBalance);
+			account.AddRevenue(name, expectedBalance);
 
 		    await _accountWriteOnlyRepository.Update(account);
 
