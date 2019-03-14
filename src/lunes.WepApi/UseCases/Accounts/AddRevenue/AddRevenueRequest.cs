@@ -2,5 +2,6 @@
 {
     public class AddRevenueRequest
     {
-    }
+	    public double Amount { get; set; }
+	}
 }

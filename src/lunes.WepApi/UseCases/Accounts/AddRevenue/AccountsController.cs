@@ -21,7 +21,7 @@ namespace lunes.WepApi.UseCases.Accounts.AddRevenue
 		}
 
 		[HttpPatch("addrevenue/{id}")]
-		public async Task<IActionResult> AddExpense(Guid id, [FromBody]AddExpenseRequest addRevenueRequest)
+		public async Task<IActionResult> AddExpense(Guid id, [FromBody]AddRevenueRequest addRevenueRequest)
 		{
 			var output = await _addRevenueUseCase.Run(id, addRevenueRequest.Amount);
 

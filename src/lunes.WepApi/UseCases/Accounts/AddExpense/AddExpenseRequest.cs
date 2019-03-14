@@ -6,6 +6,8 @@ namespace lunes.WepApi.UseCases.Accounts.AddExpense
     {
 	    public Guid AccontId { get; set; }
 
+	    public string Name { get; set; }
+
 	    public double Amount { get; set; }
     }
 }

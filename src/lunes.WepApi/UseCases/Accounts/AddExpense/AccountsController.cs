@@ -21,7 +21,7 @@ namespace lunes.WepApi.UseCases.Accounts.AddExpense
 	    [HttpPatch("addexpense/{id}")]
 	    public async Task<IActionResult> AddExpense(Guid id, [FromBody]AddExpenseRequest addExpenseRequest)
 	    {
-		    var output = await _addExpenseUseCase.Run(id, addExpenseRequest.Amount);
+		    var output = await _addExpenseUseCase.Run(id, addExpenseRequest.Name, addExpenseRequest.Amount);
 
 		    _presenter.Fill(output);
 

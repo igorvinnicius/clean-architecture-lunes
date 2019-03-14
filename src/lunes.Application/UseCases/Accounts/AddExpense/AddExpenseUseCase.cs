@@ -15,11 +15,11 @@ namespace lunes.Application.UseCases.Accounts.AddExpense
 			_accountWriteOnlyRepository = accountWriteOnlyRepository;
 		}
 
-		public async Task<AddExpenseOutput> Run(Guid accountId, double value)
+		public async Task<AddExpenseOutput> Run(Guid accountId, string name, double value)
 	    {
 			var account = await this._accountReadOnlyRepository.GetAccount(accountId);
 
-		    account.AddExpense("New Expense", value);
+		    account.AddExpense(name, value);
 
 		    await _accountWriteOnlyRepository.Update(account);
 
