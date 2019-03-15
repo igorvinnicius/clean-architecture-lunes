@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
-using lunes.Application.UseCases.Accounts.AddExpense;
 using lunes.Application.UseCases.Accounts.AddRevenue;
-using lunes.WepApi.UseCases.Accounts.AddExpense;
 using Microsoft.AspNetCore.Mvc;
 
 namespace lunes.WepApi.UseCases.Accounts.AddRevenue
