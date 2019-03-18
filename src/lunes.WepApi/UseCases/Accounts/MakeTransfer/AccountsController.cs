@@ -19,7 +19,7 @@ namespace lunes.WepApi.UseCases.Accounts.MakeTransfer
 	    }
 
 	    [HttpPatch("maketransfer")]
-	    public async Task<IActionResult> AddExpense(Guid id, [FromBody]MakeTransferRequest makeTransferRequest)
+	    public async Task<IActionResult> AddMakeTransfer([FromBody]MakeTransferRequest makeTransferRequest)
 	    {
 		    var output = await _makeTransferUseCase.Run(makeTransferRequest.Name, makeTransferRequest.Amount, makeTransferRequest.FromAccountId, makeTransferRequest.ToAccountId);
 
