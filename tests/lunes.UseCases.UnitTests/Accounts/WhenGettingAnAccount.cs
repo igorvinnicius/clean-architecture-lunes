@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using lunes.Application.Repositories.Accounts;
@@ -20,7 +21,7 @@ namespace lunes.UseCases.UnitTests.Accounts
 		public WhenGettingAnAccount()
 	    {
 		    _mockAccountRepository = new Mock<IAccountReadOnlyRepository>();
-			_sut = new GetAccountUseCase();
+			_sut = new GetAccountUseCase(_mockAccountRepository.Object);
 	    }
 
 		[Fact]
@@ -43,7 +44,7 @@ namespace lunes.UseCases.UnitTests.Accounts
 
 		    _accountsToAssume = new List<Account>() { account1 };
 
-		    _mockAccountRepository.Setup(x => x.GetAllAccounts()).ReturnsAsync(_accountsToAssume);
+		    _mockAccountRepository.Setup(x => x.GetAccount(It.Is<Guid>(y => y.Equals(account1.Id)))).ReturnsAsync(account1);
 
 	    }
 	}
