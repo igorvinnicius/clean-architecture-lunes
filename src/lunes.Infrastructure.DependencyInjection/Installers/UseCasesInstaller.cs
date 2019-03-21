@@ -1,6 +1,7 @@
 ﻿using lunes.Application.UseCases.Accounts.AddExpense;
 using lunes.Application.UseCases.Accounts.AddRevenue;
 using lunes.Application.UseCases.Accounts.CreateAccount;
+using lunes.Application.UseCases.Accounts.DeleteAccount;
 using lunes.Application.UseCases.Accounts.GetAccount;
 using lunes.Application.UseCases.Accounts.ListAccounts;
 using lunes.Application.UseCases.Accounts.MakeTransfer;
@@ -26,6 +27,8 @@ namespace lunes.Infrastructure.DependencyInjection.Installers
 		    servicesCollection.AddScoped<IMakeTransferUseCase, MakeTransferUseCase>();
 
 		    servicesCollection.AddScoped<IGetAccountUseCase, GetAccountUseCase>();
+
+		    servicesCollection.AddScoped<IDeleteAccountUseCase, DeleteAccountUseCase>();
 		}
     }
 }
