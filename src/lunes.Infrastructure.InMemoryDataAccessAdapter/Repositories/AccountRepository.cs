@@ -39,10 +39,19 @@ namespace lunes.Infrastructure.InMemoryDataAccessAdapter.Repositories
 	    public async Task Update(Account account)
 	    {
 		    var accountToUpdate = _context.Accounts.SingleOrDefault(a => a.Id == account.Id);
-		    accountToUpdate = account;
 
+		    accountToUpdate = account;
 
 		    await Task.CompletedTask;
 	    }
+
+	    public async Task Delete(Guid accoundId)
+	    {
+		    var accountToDelete = _context.Accounts.SingleOrDefault(a => a.Id == accoundId);
+
+		    _context.Accounts.Remove(accountToDelete);
+
+		    await Task.CompletedTask;
+		}
     }
 }
