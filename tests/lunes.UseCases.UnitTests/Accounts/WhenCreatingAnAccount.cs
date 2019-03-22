@@ -20,7 +20,7 @@ namespace lunes.UseCases.UnitTests.Accounts
 	    public async Task ShouldHasANameAndBalanceZero()
 	    {
 			var expectedAccountName = "Use Case Account";
-		    double expectedBalance = 0;
+		    decimal expectedBalance = 0;
 
 		    var sut = new CreateAccountUseCase(_mockAccountRepository.Object);
 

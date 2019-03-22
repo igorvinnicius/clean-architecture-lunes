@@ -5,7 +5,7 @@ namespace lunes.Application.UseCases.Accounts.AddExpense
 {
     public interface IAddExpenseUseCase
     {
-	    Task<AddExpenseOutput> Run(Guid accountId, string name, double value);
+	    Task<AddExpenseOutput> Run(Guid accountId, string name, decimal value);
 
     }
 }

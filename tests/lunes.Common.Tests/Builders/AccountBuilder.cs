@@ -9,13 +9,13 @@ namespace lunes.Common.Tests.Builders
 
 	    public static string DefaultName = "New Account";
 
-	    public static double DefaultInitialBalance = 0;
+	    public static decimal DefaultInitialBalance = 0;
 
 	    private Guid _id;
 
 	    private string _name;
 
-	    private double _initialBalance;
+	    private decimal _initialBalance;
 
 		public AccountBuilder()
 		{
@@ -36,7 +36,7 @@ namespace lunes.Common.Tests.Builders
 		    return this;
 	    }
 
-	    public AccountBuilder WithInitialBalance(double balance)
+	    public AccountBuilder WithInitialBalance(decimal balance)
 	    {
 		    this._initialBalance = balance;
 		    return this;

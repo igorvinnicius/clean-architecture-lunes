@@ -9,7 +9,7 @@ namespace lunes.Domain.Accounts
     {
 	    public Guid Id { get; }
 	    public string Name { get; private set; }
-	    public double Balance { get; private set; }
+	    public decimal Balance { get; private set; }
 
 	    public ICollection<IOperation> Operations => _operations;
 
@@ -24,7 +24,7 @@ namespace lunes.Domain.Accounts
 			_operations = new List<IOperation>();
 		}
 		
-	    public void AddRevenue(string name, double amount)
+	    public void AddRevenue(string name, decimal amount)
 	    {
 		    var revenue = new Revenue(name, amount);
 			_operations.Add(revenue);
@@ -38,7 +38,7 @@ namespace lunes.Domain.Accounts
 		    return new ReadOnlyCollection<IOperation>(revenues);
 	    }
 
-	    public double GetCurrentBalance()
+	    public decimal GetCurrentBalance()
 	    {
 		    var creditOperations = _operations.Where(o => o.OperationNature == OperationNature.Credit).Sum(o => o.Amount);
 		    var debitOperations = _operations.Where(o => o.OperationNature == OperationNature.Debit).Sum(o => o.Amount);
@@ -58,7 +58,7 @@ namespace lunes.Domain.Accounts
 		    return new ReadOnlyCollection<IOperation>(transfers);
 	    }
 
-		public void AddExpense(string name, double amount)
+		public void AddExpense(string name, decimal amount)
 	    {
 		    var expense = new Expense(name, amount);
 			_operations.Add(expense);
@@ -69,14 +69,14 @@ namespace lunes.Domain.Accounts
 		    Name = name;
 	    }
 
-	    public void MakeTransfer(string name, double amount, Guid toAccountId)
+	    public void MakeTransfer(string name, decimal amount, Guid toAccountId)
 	    {
 			var transfer = new Transfer(name, OperationNature.Debit, amount, this.Id, toAccountId);
 			_operations.Add(transfer);
 		   
 	    }
 
-	    public void ReceiveTransfer(string name, double amount, Guid fromAccountId)
+	    public void ReceiveTransfer(string name, decimal amount, Guid fromAccountId)
 	    {
 			var transfer = new Transfer(name, OperationNature.Credit, amount, fromAccountId, this.Id);
 			_operations.Add(transfer);

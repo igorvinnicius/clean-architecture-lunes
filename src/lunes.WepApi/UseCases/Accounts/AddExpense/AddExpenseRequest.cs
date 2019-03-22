@@ -8,6 +8,6 @@ namespace lunes.WepApi.UseCases.Accounts.AddExpense
 
 	    public string Name { get; set; }
 
-	    public double Amount { get; set; }
+	    public decimal Amount { get; set; }
     }
 }

@@ -54,7 +54,7 @@ namespace lunes.Domain.UnitTests.Accounts
 	    [InlineData(300, 260, 40)]
 	    [InlineData(3000, 250.86, 2749.14)]
 	    [InlineData(2000, 4020, -2020)]
-		public void ShouldCalculateBalanceCorrectly(double initialBalance, double expense, double expectedBalance)
+		public void ShouldCalculateBalanceCorrectly(decimal initialBalance, decimal expense, decimal expectedBalance)
 	    {
 			var sut = CreateAccount("Sut Account");
 

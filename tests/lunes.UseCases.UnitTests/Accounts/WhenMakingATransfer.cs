@@ -1,7 +1,6 @@
 ﻿using System;
 using lunes.Application.Repositories.Accounts;
 using lunes.Application.UseCases.Accounts.MakeTransfer;
-using lunes.Common.Tests.Builders;
 using lunes.Domain.Accounts;
 using Moq;
 using Xunit;
@@ -66,7 +65,7 @@ namespace lunes.UseCases.UnitTests.Accounts
 	    [InlineData(100, -100, 100, 0, 0)]
 	    [InlineData(-100, 100, 100, -200, 200)]
 	    //[InlineData(125.74, 0, 100, 25.74, 100)]
-		public async void ShouldDebitInFromAccountAndCreditAmountInToAccountCorrectly(double fromAccountInitialBalance, double toAccountInitalBalance, double amount, double expectedFromAccountBalance, double expectedToAccountBalance)
+		public async void ShouldDebitInFromAccountAndCreditAmountInToAccountCorrectly(decimal fromAccountInitialBalance, decimal toAccountInitalBalance, decimal amount, decimal expectedFromAccountBalance, decimal expectedToAccountBalance)
 	    {
 		    AssumeAccountInRepository();
 

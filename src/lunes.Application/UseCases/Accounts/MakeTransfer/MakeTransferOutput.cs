@@ -2,11 +2,11 @@
 {
     public class MakeTransferOutput
     {
-	    public double FromAccountBalance { get; set; }
+	    public decimal FromAccountBalance { get; set; }
 
-	    public double ToAccountBalance { get; set; }
+	    public decimal ToAccountBalance { get; set; }
 
-	    public MakeTransferOutput(double fromAccountBalance, double toAccountBalance)
+	    public MakeTransferOutput(decimal fromAccountBalance, decimal toAccountBalance)
 	    {
 		    FromAccountBalance = fromAccountBalance;
 		    ToAccountBalance = toAccountBalance;

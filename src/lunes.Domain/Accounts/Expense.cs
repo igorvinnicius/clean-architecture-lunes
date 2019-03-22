@@ -6,10 +6,10 @@ namespace lunes.Domain.Accounts
     {
 	    public string Name { get; }
 	    public DateTime Date { get; }
-	    public double Amount { get; }
+	    public decimal Amount { get; }
 	    public OperationNature OperationNature { get; }
 
-	    public Expense(string name, double amount)
+	    public Expense(string name, decimal amount)
 		{
 			Name = name;
 			Amount = amount;

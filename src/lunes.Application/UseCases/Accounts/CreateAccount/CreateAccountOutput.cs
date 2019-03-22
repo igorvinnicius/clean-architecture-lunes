@@ -6,9 +6,9 @@ namespace lunes.Application.UseCases.Accounts.CreateAccount
     {
 	    public Guid AccountId { get; }
 	    public string AccountName { get; }
-	    public double AccountBalance { get; }
+	    public decimal AccountBalance { get; }
 
-		public CreateAccountOutput(Guid accountId, string accountName, double accountBalance)
+		public CreateAccountOutput(Guid accountId, string accountName, decimal accountBalance)
 		{
 			AccountId = accountId;
 			AccountName = accountName;

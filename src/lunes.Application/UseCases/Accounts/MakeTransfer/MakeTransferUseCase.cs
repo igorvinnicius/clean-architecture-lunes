@@ -15,7 +15,7 @@ namespace lunes.Application.UseCases.Accounts.MakeTransfer
 		    _accountWriteOnlyRepository = accountWriteOnlyRepository;
 	    }
 
-		public async Task<MakeTransferOutput> Run(string name, double amount, Guid fromAccountId, Guid toAccountId)
+		public async Task<MakeTransferOutput> Run(string name, decimal amount, Guid fromAccountId, Guid toAccountId)
 	    {
 		    var fromAccount = await this._accountReadOnlyRepository.GetAccount(fromAccountId);
 

@@ -1,6 +1,4 @@
 ﻿using System;
-using lunes.Common.Tests.Builders;
-using lunes.Domain.Accounts;
 using Xunit;
 
 namespace lunes.Domain.UnitTests.Accounts
@@ -25,7 +23,7 @@ namespace lunes.Domain.UnitTests.Accounts
 	    [InlineData(1055.30, 300, 1355.30)]
 	    [InlineData(-220, 100, -120)]
 	    [InlineData(-300, 500, 200)]
-		public void ShouldCalculateBalanceCorrectly(double intitalBalance, double amount, double expectedBalance)
+		public void ShouldCalculateBalanceCorrectly(decimal intitalBalance, decimal amount, decimal expectedBalance)
 	    {
 		    var sut = CreateAccount("From Account", initialBalance: intitalBalance);
 

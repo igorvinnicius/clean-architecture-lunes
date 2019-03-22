@@ -5,7 +5,7 @@ namespace lunes.Application.UseCases.Accounts.AddRevenue
 {
     public interface IAddRevenueUseCase
     {
-	    Task<AddRevenueOutput> Run(Guid accountId, string name, double expectedBalance);
+	    Task<AddRevenueOutput> Run(Guid accountId, string name, decimal expectedBalance);
 
     }
 }

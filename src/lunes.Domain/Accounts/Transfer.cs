@@ -6,12 +6,12 @@ namespace lunes.Domain.Accounts
     {
 	    public string Name { get; }
 	    public DateTime Date { get; }
-	    public double Amount { get; }
+	    public decimal Amount { get; }
 	    public OperationNature OperationNature { get; }
 	    public Guid FromAccountId { get; }
 	    public Guid ToAccountId { get; }
 
-		public Transfer(string name, OperationNature operationNature, double amount, Guid fromAccountId, Guid toAccountId)
+		public Transfer(string name, OperationNature operationNature, decimal amount, Guid fromAccountId, Guid toAccountId)
 		{
 			Name = name;
 			Date = DateTime.UtcNow;

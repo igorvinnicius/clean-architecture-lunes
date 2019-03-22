@@ -6,7 +6,7 @@ namespace lunes.UseCases.UnitTests.Accounts
 {
     public class AccountUseCasesTestBase
     {
-	    protected Account CreateAccount(string name, double initialBalance = 0)
+	    protected Account CreateAccount(string name, decimal initialBalance = 0)
 	    {
 		    return new AccountBuilder()
 			    .WithId(Guid.NewGuid())
