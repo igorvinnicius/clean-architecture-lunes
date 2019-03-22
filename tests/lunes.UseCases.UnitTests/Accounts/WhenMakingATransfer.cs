@@ -64,7 +64,7 @@ namespace lunes.UseCases.UnitTests.Accounts
 		[InlineData(100, 100, 100, 0, 200)]
 	    [InlineData(100, -100, 100, 0, 0)]
 	    [InlineData(-100, 100, 100, -200, 200)]
-	    //[InlineData(125.74, 0, 100, 25.74, 100)]
+	    [InlineData(125.74, 0, 100, 25.74, 100)]
 		public async void ShouldDebitInFromAccountAndCreditAmountInToAccountCorrectly(decimal fromAccountInitialBalance, decimal toAccountInitalBalance, decimal amount, decimal expectedFromAccountBalance, decimal expectedToAccountBalance)
 	    {
 		    AssumeAccountInRepository();
