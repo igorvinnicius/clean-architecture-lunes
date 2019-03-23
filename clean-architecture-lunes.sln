@@ -31,6 +31,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "lunes.Infrastructure.Depend
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{85DD6A78-FC9A-4330-B453-B87235CCE194}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "lunes.Persistence.EntityFrameworkDataAccessAdapter", "src\lunes.Persistence.EntityFrameworkDataAccessAdapter\lunes.Persistence.EntityFrameworkDataAccessAdapter.csproj", "{BB97364D-7092-4397-BA97-CD13EF3B6ABD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,6 +71,10 @@ Global
 		{4BE7F486-447B-40A4-897E-825329A794F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4BE7F486-447B-40A4-897E-825329A794F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4BE7F486-447B-40A4-897E-825329A794F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB97364D-7092-4397-BA97-CD13EF3B6ABD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB97364D-7092-4397-BA97-CD13EF3B6ABD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB97364D-7092-4397-BA97-CD13EF3B6ABD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB97364D-7092-4397-BA97-CD13EF3B6ABD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -83,6 +89,7 @@ Global
 		{FDE39DFC-6235-420B-B661-495F9A5C661B} = {35101855-946E-4DA1-A8E9-7A26442021F6}
 		{91B83155-B254-494A-BE2D-F58AC342A73E} = {856719E9-1200-466F-B0A9-F4B5E46081FC}
 		{4BE7F486-447B-40A4-897E-825329A794F4} = {1C57F862-E7C3-4044-B553-16C1422A9581}
+		{BB97364D-7092-4397-BA97-CD13EF3B6ABD} = {35101855-946E-4DA1-A8E9-7A26442021F6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B9C599AA-17AA-48D7-836E-4BAD5D5BB976}
