@@ -26,7 +26,7 @@ namespace lunes.Infrastructure.InMemoryDataAccessAdapter.Repositories
 
 	    public async Task<IEnumerable<Account>> GetAllAccounts()
 	    {
-		    return await Task.FromResult<List<Account>>(_context.Accounts.ToList()); ;
+		    return await Task.FromResult<List<Account>>(_context.Accounts.ToList());
 	    }
 
 	    public async Task Add(Account account)
