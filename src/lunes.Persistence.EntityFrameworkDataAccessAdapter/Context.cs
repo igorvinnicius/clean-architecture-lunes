@@ -8,7 +8,13 @@ namespace lunes.Persistence.EntityFrameworkDataAccessAdapter
     {
 	    public DbSet<Account> Accounts { get; set; }
 
-	    public async  Task ExecuteSaveChangesAsync()
+	    protected override void OnModelCreating(ModelBuilder modelBuilder)
+	    {
+		    modelBuilder.Entity<Account>();
+
+	    }
+
+		public async  Task ExecuteSaveChangesAsync()
 	    {
 		    await this.SaveChangesAsync();
 	    }
