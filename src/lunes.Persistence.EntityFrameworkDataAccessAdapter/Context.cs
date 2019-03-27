@@ -11,12 +11,12 @@ namespace lunes.Persistence.EntityFrameworkDataAccessAdapter
 	    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 	    {
 		    optionsBuilder
-			    .UseSqlServer(@"Server=(LocalDB)\\MSSQLLocalDB;Database=LunesDb;Integrated Security=true;");
+			    .UseSqlServer(@"Server=(localdb)\MSSQLLocalDB;Database=LunesDb;Integrated Security=true;");
 	    }
 
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 	    {
-		    modelBuilder.Entity<Account>();
+		    modelBuilder.Entity<Account>().HasKey(e => e.Id);
 	    }
 
 		public async  Task ExecuteSaveChangesAsync()

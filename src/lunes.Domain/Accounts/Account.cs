@@ -7,7 +7,7 @@ namespace lunes.Domain.Accounts
 {
     public class Account : IEntity, IAggregateRoot
     {
-	    public Guid Id { get; }
+	    public Guid Id { get; private set; }
 	    public string Name { get; private set; }
 	    public decimal Balance { get; private set; }
 
