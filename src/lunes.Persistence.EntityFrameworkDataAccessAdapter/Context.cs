@@ -8,7 +8,13 @@ namespace lunes.Persistence.EntityFrameworkDataAccessAdapter
     {
 	    public DbSet<Account> Accounts { get; set; }
 
-	    protected override void OnModelCreating(ModelBuilder modelBuilder)
+	    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+	    {
+		    optionsBuilder
+			    .UseSqlServer(@"Server=(LocalDB)\\MSSQLLocalDB;Database=LunesDb;Integrated Security=true;");
+	    }
+
+		protected override void OnModelCreating(ModelBuilder modelBuilder)
 	    {
 		    modelBuilder.Entity<Account>();
 	    }
