@@ -11,7 +11,6 @@ namespace lunes.Persistence.EntityFrameworkDataAccessAdapter
 	    protected override void OnModelCreating(ModelBuilder modelBuilder)
 	    {
 		    modelBuilder.Entity<Account>();
-
 	    }
 
 		public async  Task ExecuteSaveChangesAsync()

@@ -7,7 +7,7 @@ namespace lunes.Infrastructure.DependencyInjection
     {
 	    public static void InstallServices(IServiceCollection servicesCollection)
 	    {
-			RepositoriesInstaller.Install(servicesCollection);
+			EntityFrameworkRepositoriesInstaller.Install(servicesCollection);
 			UseCasesInstaller.Install(servicesCollection);
 	    }
     }
