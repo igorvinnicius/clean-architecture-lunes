@@ -13,7 +13,7 @@ namespace lunes.Domain.UnitTests.Accounts
 		    var expectedAmount = 100;
 		    var expectedDate = DateTime.Now;
 
-		    var sut = new Revenue(expectedName, expectedAmount);
+		    var sut = new Revenue(Guid.NewGuid(), expectedName, expectedAmount);
 
 		    Assert.Equal(expectedName, sut.Name);
 		    Assert.Equal(expectedAmount, sut.Amount);

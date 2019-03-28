@@ -15,8 +15,21 @@ namespace lunes.Persistence.EntityFrameworkDataAccessAdapter
 	    }
 
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
-	    {
-		    modelBuilder.Entity<Account>().HasKey(e => e.Id);
+		{
+			modelBuilder.Entity<Account>()
+				.HasMany<Operation>(e => e.Operations);
+
+			modelBuilder.Entity<Account>().HasKey(e => e.Id);
+			  
+
+		    modelBuilder.Entity<Operation>()
+			    .ToTable("Operations")
+			    .HasDiscriminator<OperationType>("OperationType")
+			    .HasValue<Expense>(OperationType.Expense)
+			    .HasValue<Revenue>(OperationType.Revenue)
+			    .HasValue<Transfer>(OperationType.Transfer);
+
+
 	    }
 
 		public async  Task ExecuteSaveChangesAsync()

@@ -11,9 +11,9 @@ namespace lunes.Domain.Accounts
 	    public string Name { get; private set; }
 	    public decimal Balance { get; private set; }
 
-	    public ICollection<IOperation> Operations => _operations;
+	    public ICollection<Operation> Operations => _operations;
 
-	    private ICollection<IOperation> _operations;
+	    private ICollection<Operation> _operations;
 
 		public Account(string name)
 		{
@@ -21,12 +21,12 @@ namespace lunes.Domain.Accounts
 			Name = name;
 			Balance = 0;
 
-			_operations = new List<IOperation>();
+			_operations = new List<Operation>();
 		}
 		
 	    public void AddRevenue(string name, decimal amount)
 	    {
-		    var revenue = new Revenue(name, amount);
+		    var revenue = new Revenue(this.Id, name, amount);
 			_operations.Add(revenue);
 
 		    Balance += revenue.Amount;
@@ -35,7 +35,7 @@ namespace lunes.Domain.Accounts
 	    public IReadOnlyCollection<IOperation> GetRevenues()
 	    {
 		    var revenues = _operations.Where(o => o is Revenue).ToList();
-		    return new ReadOnlyCollection<IOperation>(revenues);
+		    return new ReadOnlyCollection<Operation>(revenues);
 	    }
 
 	    public decimal GetCurrentBalance()
@@ -49,18 +49,18 @@ namespace lunes.Domain.Accounts
 	    public IReadOnlyCollection<IOperation> GetExpenses()
 	    {
 			var expenses = _operations.Where(o => o is Expense).ToList();
-		    return new ReadOnlyCollection<IOperation>(expenses);
+		    return new ReadOnlyCollection<Operation>(expenses);
 		}
 
 	    public IReadOnlyCollection<IOperation> GetTransfers()
 	    {
 		    var transfers = _operations.Where(o => o is Transfer).ToList();
-		    return new ReadOnlyCollection<IOperation>(transfers);
+		    return new ReadOnlyCollection<Operation>(transfers);
 	    }
 
 		public void AddExpense(string name, decimal amount)
 	    {
-		    var expense = new Expense(name, amount);
+		    var expense = new Expense(this.Id, name, amount);
 			_operations.Add(expense);
 	    }
 
@@ -71,14 +71,14 @@ namespace lunes.Domain.Accounts
 
 	    public void MakeTransfer(string name, decimal amount, Guid toAccountId)
 	    {
-			var transfer = new Transfer(name, OperationNature.Debit, amount, this.Id, toAccountId);
+			var transfer = new Transfer(this.Id, name, OperationNature.Debit, amount, this.Id, toAccountId);
 			_operations.Add(transfer);
 		   
 	    }
 
 	    public void ReceiveTransfer(string name, decimal amount, Guid fromAccountId)
 	    {
-			var transfer = new Transfer(name, OperationNature.Credit, amount, fromAccountId, this.Id);
+			var transfer = new Transfer(this.Id, name, OperationNature.Credit, amount, fromAccountId, this.Id);
 			_operations.Add(transfer);
 		}
     }

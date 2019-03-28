@@ -1,19 +1,15 @@
 ﻿using System;
+using System.Threading;
 
 namespace lunes.Domain.Accounts
 {
-	public class Revenue : IOperation
+	public class Revenue : Operation
 	{
-		public string Name { get; }
-		public DateTime Date { get; }
-		public decimal Amount { get; }
-		public OperationNature OperationNature { get; private set; }
+		public Revenue() {}
 
-		public Revenue(string name, decimal amount)
+		public Revenue(Guid accountId, string name, decimal amount) 
+			: base(accountId, name, amount)
 		{
-			Name = name;
-			Date = DateTime.Now;
-			Amount = amount;
 			OperationNature = OperationNature.Credit;
 		}
 	}

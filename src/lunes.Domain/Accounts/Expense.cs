@@ -2,18 +2,13 @@
 
 namespace lunes.Domain.Accounts
 {
-    public class Expense : IOperation
+    public class Expense : Operation
     {
-	    public string Name { get; }
-	    public DateTime Date { get; }
-	    public decimal Amount { get; }
-	    public OperationNature OperationNature { get; }
+	    public Expense() { }
 
-	    public Expense(string name, decimal amount)
+	    public Expense(Guid accountId, string name, decimal amount) 
+		    : base(accountId, name, amount)
 		{
-			Name = name;
-			Amount = amount;
-			Date = DateTime.Now;
 			OperationNature = OperationNature.Debit;
 		}
 	}

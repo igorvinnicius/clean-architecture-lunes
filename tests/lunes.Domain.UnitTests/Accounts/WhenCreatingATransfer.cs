@@ -18,7 +18,7 @@ namespace lunes.Domain.UnitTests.Accounts
 
 		    var expectedOperationType = OperationNature.Credit;
 
-		    var sut = new Transfer(expectedName, expectedOperationType, expectedAmount, expectedFromAccountId, expectedToAccountId);
+		    var sut = new Transfer(Guid.NewGuid(), expectedName, expectedOperationType, expectedAmount, expectedFromAccountId, expectedToAccountId);
 
 		    Assert.Equal(expectedName, sut.Name);
 		    Assert.Equal(expectedAmount, sut.Amount);
