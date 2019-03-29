@@ -28,8 +28,6 @@ namespace lunes.Persistence.EntityFrameworkDataAccessAdapter
 			    .HasValue<Expense>(OperationType.Expense)
 			    .HasValue<Revenue>(OperationType.Revenue)
 			    .HasValue<Transfer>(OperationType.Transfer);
-
-
 	    }
 
 		public async  Task ExecuteSaveChangesAsync()
