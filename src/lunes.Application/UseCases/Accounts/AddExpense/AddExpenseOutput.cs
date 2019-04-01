@@ -1,8 +1,9 @@
 ﻿using System;
+using lunes.Application.UseCases.Common;
 
 namespace lunes.Application.UseCases.Accounts.AddExpense
 {
-    public class AddExpenseOutput
+    public class AddExpenseOutput : Output
     {
 	    public Guid AccountId { get; set; }
 
