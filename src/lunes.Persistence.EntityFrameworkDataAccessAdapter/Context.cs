@@ -20,7 +20,6 @@ namespace lunes.Persistence.EntityFrameworkDataAccessAdapter
 				.HasMany<Operation>(e => e.Operations);
 
 			modelBuilder.Entity<Account>().HasKey(e => e.Id);
-			  
 
 		    modelBuilder.Entity<Operation>()
 			    .ToTable("Operations")
@@ -32,18 +31,18 @@ namespace lunes.Persistence.EntityFrameworkDataAccessAdapter
 
 		public async  Task ExecuteSaveChangesAsync()
 	    {
-		    await this.SaveChangesAsync();
+		    await SaveChangesAsync();
 	    }
 
 	    public async Task UpdateEntity(Account account)
 	    {
-		    this.Update(account);
+		    Update(account);
 		    await Task.CompletedTask;
 	    }
 
 	    public async Task DeleteEntity(Account account)
 	    {
-		    this.Remove(account);
+		    Remove(account);
 		    await Task.CompletedTask;
 	    }
 
