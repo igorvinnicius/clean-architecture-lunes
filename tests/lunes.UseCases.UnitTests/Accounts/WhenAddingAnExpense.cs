@@ -1,7 +1,6 @@
 ﻿using System;
 using lunes.Application.Repositories.Accounts;
 using lunes.Application.UseCases.Accounts.AddExpense;
-using lunes.Common.Tests.Builders;
 using lunes.Domain.Accounts;
 using Moq;
 using Xunit;
@@ -43,7 +42,7 @@ namespace lunes.UseCases.UnitTests.Accounts
 		}
 
 	    [Fact]
-	    public async void ShouldCallUpdateinRepositoryProperly()
+	    public async void ShouldCallUpdateInRepositoryProperly()
 	    {
 		    AssumeAccountInRepository();
 

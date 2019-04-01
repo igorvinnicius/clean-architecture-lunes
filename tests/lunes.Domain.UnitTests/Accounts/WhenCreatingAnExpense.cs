@@ -9,11 +9,12 @@ namespace lunes.Domain.UnitTests.Accounts
 	    [Fact]
 	    public void ShouldInitializeCorretly()
 	    {
-		    var expectedName = "Name";
+		    var expectedId = Guid.NewGuid();
+			var expectedName = "Name";
 		    var expectedAmount = 100;
 		    var expectedDate = DateTime.Now;
 
-		    var sut = new Expense(Guid.NewGuid(), expectedName, expectedAmount);
+		    var sut = new Expense(expectedId, expectedName, expectedAmount);
 
 			Assert.Equal(expectedName, sut.Name);
 		    Assert.Equal(expectedAmount, sut.Amount);

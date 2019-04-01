@@ -9,6 +9,7 @@ namespace lunes.Domain.UnitTests.Accounts
 	    [Fact]
 	    public void ShouldInitializeCorrectly()
 	    {
+		    var expectedId = Guid.NewGuid();
 		    var expectedName = "New Transfer";
 		    var expectedAmount = 100;
 		    var expectedDate = DateTime.UtcNow;
@@ -18,7 +19,7 @@ namespace lunes.Domain.UnitTests.Accounts
 
 		    var expectedOperationType = OperationNature.Credit;
 
-		    var sut = new Transfer(Guid.NewGuid(), expectedName, expectedOperationType, expectedAmount, expectedFromAccountId, expectedToAccountId);
+		    var sut = new Transfer(expectedId, expectedName, expectedOperationType, expectedAmount, expectedFromAccountId, expectedToAccountId);
 
 		    Assert.Equal(expectedName, sut.Name);
 		    Assert.Equal(expectedAmount, sut.Amount);
