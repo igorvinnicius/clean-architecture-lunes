@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Threading.Tasks;
+using lunes.Application.Exceptions;
 using lunes.Application.Repositories.Accounts;
 using lunes.Application.UseCases.Accounts.AddExpense;
 using lunes.Domain.Accounts;
@@ -51,7 +53,18 @@ namespace lunes.UseCases.UnitTests.Accounts
 		    _mockAccountRepository.Verify(x => x.Update(It.IsAny<Account>()));
 	    }
 
-		private void AssumeAccountInRepository()
+	    [Fact]
+	    public async  Task ShouldThrowAccountNotFoundExceptionWhenAccountIsNotFound()
+	    {
+		    await Assert.ThrowsAsync<AccountNotFoundException>(async () =>
+		    {
+			    AssumeAccountInRepository();
+
+			     await _sut.Run(Guid.NewGuid(), "New Expense", 100);
+			});
+	    }
+
+	    private void AssumeAccountInRepository()
 	    {
 		    _accountId = _account.Id;
 

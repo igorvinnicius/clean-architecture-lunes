@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using lunes.Application.Exceptions;
 using lunes.Application.Repositories.Accounts;
 
 namespace lunes.Application.UseCases.Accounts.AddExpense
@@ -18,6 +19,9 @@ namespace lunes.Application.UseCases.Accounts.AddExpense
 		public async Task<AddExpenseOutput> Run(Guid accountId, string name, decimal value)
 	    {
 			var account = await this._accountReadOnlyRepository.GetAccount(accountId);
+
+			if(account == null)
+				throw new AccountNotFoundException("Account not found.");
 
 		    account.AddExpense(name, value);
 
