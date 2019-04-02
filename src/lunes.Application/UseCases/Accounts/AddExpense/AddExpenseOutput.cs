@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using lunes.Application.UseCases.Common;
 
 namespace lunes.Application.UseCases.Accounts.AddExpense
@@ -9,10 +11,13 @@ namespace lunes.Application.UseCases.Accounts.AddExpense
 
 	    public decimal Balance { get; }
 
-	    public AddExpenseOutput(Guid accountId, decimal balance)
+		public AddExpenseOutput(Guid accountId, decimal balance)
 	    {
 		    AccountId = accountId;
 		    Balance = balance;
+			
 	    }
-	}
+
+	   
+    }
 }

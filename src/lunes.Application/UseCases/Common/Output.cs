@@ -1,19 +1,23 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace lunes.Application.UseCases.Common
 {
     public class Output
     {
-	    protected IList<string> Errors { get; private set; }
+	    protected List<string> Errors { get; set; } = new List<string>();
 
-	    public Output()
+	    protected bool HasErrors  => Errors.Any();
+
+	    protected void AddError(string error)
 	    {
-		    Errors = new List<string>();
+			Errors.Add(error);
 	    }
 
-		public Output(IList<string> errors)
+	    protected void AddErrors(List<string> errors)
 	    {
-		    Errors = errors;
+		    Errors.AddRange(errors);
 	    }
-    }
+
+	}
 }
