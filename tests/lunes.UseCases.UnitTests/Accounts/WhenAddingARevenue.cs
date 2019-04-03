@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using lunes.Application.Exceptions;
 using lunes.Application.Repositories.Accounts;
 using lunes.Application.UseCases.Accounts.AddRevenue;
 using lunes.Domain.Accounts;
@@ -40,6 +41,17 @@ namespace lunes.UseCases.UnitTests.Accounts
 	    }
 
 	    [Fact]
+	    public async Task ShouldThrowAccountNotFoundExceptionWhenAccountIsNotFound()
+	    {
+		    await Assert.ThrowsAsync<AccountNotFoundException>(async () =>
+		    {
+			    AssumeAccountInRepository();
+
+			    await _sut.Run(Guid.NewGuid(), "New Revenue", 100);
+		    });
+	    }
+
+		[Fact]
 	    public async Task ShouldCallUpdateinRepositoryProperly()
 	    {
 		    AssumeAccountInRepository();
