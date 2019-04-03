@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using lunes.Application.Exceptions;
 using lunes.Application.Repositories.Accounts;
 using lunes.Application.UseCases.Accounts.DeleteAccount;
 using lunes.Domain.Accounts;
@@ -36,7 +37,16 @@ namespace lunes.UseCases.UnitTests.Accounts
 			Assert.True(output.AccountDeleted);
 	    }
 
-	    private void AssumeAccountInRepository()
+		[Fact]
+		public async Task ShouldThrowAccountNotFoundExceptionWhenAccountIsNotFound()
+		{
+			await Assert.ThrowsAsync<AccountNotFoundException>(async () =>
+			{
+				await _sut.Run(Guid.NewGuid());
+			});
+		}
+
+		private void AssumeAccountInRepository()
 	    {
 		    _account = CreateAccount("New Account");
 
