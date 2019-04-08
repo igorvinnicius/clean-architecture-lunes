@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using lunes.Application.Exceptions;
 using lunes.Application.Repositories.Accounts;
 
 namespace lunes.Application.UseCases.Accounts.UpdateAccount
@@ -19,7 +20,10 @@ namespace lunes.Application.UseCases.Accounts.UpdateAccount
 	    {
 		    var account = await _accountReadOnlyRepository.GetAccount(accountId);
 
-		    account.UpdateName(accountName);
+		    if (account == null)
+			    throw new AccountNotFoundException("Account not found.");
+
+			account.UpdateName(accountName);
 
 		    await _accountWriteOnlyRepository.Update(account);
 
