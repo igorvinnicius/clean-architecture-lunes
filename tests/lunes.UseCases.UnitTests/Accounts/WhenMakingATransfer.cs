@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Threading.Tasks;
+using lunes.Application.Exceptions;
 using lunes.Application.Repositories.Accounts;
 using lunes.Application.UseCases.Accounts.MakeTransfer;
 using lunes.Domain.Accounts;
@@ -60,7 +62,29 @@ namespace lunes.UseCases.UnitTests.Accounts
 
 	    }
 
-	    [Theory]
+	    [Fact]
+	    public async Task ShouldThrowAccountNotFoundExceptionWhenFromAccountIsNotFound()
+	    {
+		    await Assert.ThrowsAsync<AccountNotFoundException>(async () =>
+		    {
+			    AssumeAccountInRepository();
+
+			    await _sut.Run( "New Revenue", 100, Guid.NewGuid(), _toAccountId);
+		    });
+	    }
+
+	    [Fact]
+	    public async Task ShouldThrowAccountNotFoundExceptionWhenToAccountIsNotFound()
+	    {
+		    await Assert.ThrowsAsync<AccountNotFoundException>(async () =>
+		    {
+			    AssumeAccountInRepository();
+
+			    await _sut.Run("New Revenue", 100, _fromAccountId, Guid.NewGuid());
+		    });
+	    }
+
+		[Theory]
 		[InlineData(100, 100, 100, 0, 200)]
 	    [InlineData(100, -100, 100, 0, 0)]
 	    [InlineData(-100, 100, 100, -200, 200)]

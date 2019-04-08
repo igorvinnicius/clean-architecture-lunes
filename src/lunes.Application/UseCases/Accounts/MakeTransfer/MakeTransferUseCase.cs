@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using lunes.Application.Exceptions;
 using lunes.Application.Repositories.Accounts;
 
 namespace lunes.Application.UseCases.Accounts.MakeTransfer
@@ -19,9 +20,15 @@ namespace lunes.Application.UseCases.Accounts.MakeTransfer
 	    {
 		    var fromAccount = await this._accountReadOnlyRepository.GetAccount(fromAccountId);
 
-		    var toAccount = await this._accountReadOnlyRepository.GetAccount(toAccountId);
+		    if (fromAccount == null)
+			    throw new AccountNotFoundException("Account not found.");
 
-		    fromAccount.MakeTransfer(name, amount, toAccountId);
+			var toAccount = await this._accountReadOnlyRepository.GetAccount(toAccountId);
+
+			if (toAccount == null)
+				throw new AccountNotFoundException("Account not found.");
+
+			fromAccount.MakeTransfer(name, amount, toAccountId);
 
 			toAccount.ReceiveTransfer(name, amount, fromAccountId);
 
