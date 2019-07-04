@@ -33,7 +33,7 @@ namespace lunes.UseCases.UnitTests.Accounts
 	    }
 
         [Fact]
-        public async void ShouldThrowApplicationExceptionWhenAccountNameIsNullOrEmpty()
+        public async Task ShouldThrowApplicationExceptionWhenAccountNameIsNullOrEmpty()
         {
             await Assert.ThrowsAsync<ApplicationException>(async () =>
             {
