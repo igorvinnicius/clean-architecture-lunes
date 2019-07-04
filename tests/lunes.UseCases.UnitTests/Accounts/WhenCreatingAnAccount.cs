@@ -4,6 +4,7 @@ using lunes.Application.Repositories.Accounts;
 using lunes.Application.UseCases.Accounts.CreateAccount;
 using Moq;
 using Xunit;
+using lunes.Application.Exceptions;
 
 namespace lunes.UseCases.UnitTests.Accounts
 {
@@ -30,6 +31,18 @@ namespace lunes.UseCases.UnitTests.Accounts
 			Assert.Equal(expectedBalance, actualAccountOutput.AccountBalance);
 			
 	    }
+
+        [Fact]
+        public async void ShouldThrowApplicationExceptionWhenAccountNameIsNullOrEmpty()
+        {
+            await Assert.ThrowsAsync<ApplicationException>(async () =>
+            {
+                var sut = new CreateAccountUseCase(_mockAccountRepository.Object);
+
+                await sut.Run("");
+            });           
+
+        }
 
 	    [Fact]
 	    public async Task ShouldCallAddMethodInRepositoryProperly()
